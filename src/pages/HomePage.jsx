@@ -6,7 +6,6 @@ import {
   BadgePercent,
   Building2,
   Calculator,
-  Factory,
   FileCheck2,
   Home,
   IndianRupee,
@@ -20,30 +19,30 @@ import {
 import { Link } from 'react-router-dom'
 import Button from '../components/ui/Button'
 import {
+  COMPANY_INFO,
   RESIDENTIAL_COST_PER_KW,
   RESIDENTIAL_ROOF_AREA_PER_KW,
   RESIDENTIAL_SUBSIDY_CAP,
 } from '../constants'
 import { getLocationPagePath, SERVICE_LOCATIONS } from '../data/serviceLocations'
 import { formatCurrency, formatNumber } from '../solar/helpers'
-import gnpLogo from '../../assets/gnp_logo.png'
 
 const categoryCards = [
   {
-    title: 'Residential Solar',
-    description: 'Rooftop systems for homes with subsidy support and net metering.',
+    title: 'Domestic Solar',
+    description: 'Rooftop solar systems for homes with subsidy-ready design and installation.',
     to: '/residential',
     icon: Home,
   },
   {
     title: 'Commercial & Industrial',
-    description: 'High-yield plants for offices, warehouses, and factory loads.',
+    description: 'Customized systems for businesses, factories, and institutions.',
     to: '/commercial',
     icon: Building2,
   },
   {
-    title: 'Rural / EPC Projects',
-    description: 'Land monetization and utility-scale EPC execution support.',
+    title: 'Agriculture & EPC',
+    description: 'Solar pumps, agriculture solutions, and complete EPC project execution.',
     to: '/epc',
     icon: Wrench,
   },
@@ -53,8 +52,8 @@ const heroBanners = [
   {
     image:
       'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80',
-    title: 'Residential Solar Solutions',
-    subtitle: 'Lower home electricity bills with subsidy-ready rooftop installations.',
+    title: 'Rooftop Solar Systems',
+    subtitle: 'Efficient rooftop installations for homes, offices, and industries.',
     collageTop:
       'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80',
     collageBottom:
@@ -63,8 +62,8 @@ const heroBanners = [
   {
     image:
       'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1920&q=80',
-    title: 'Commercial Solar Systems',
-    subtitle: 'High-performance solar plants for factories, offices, and industrial rooftops.',
+    title: 'EPC Solar Solutions',
+    subtitle: 'Engineering, procurement, and construction support for complete solar projects.',
     collageTop:
       'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80',
     collageBottom:
@@ -73,8 +72,8 @@ const heroBanners = [
   {
     image:
       'https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1920&q=80',
-    title: 'Rural Solar & EPC Projects',
-    subtitle: 'Scalable rural and utility solar execution with reliable generation planning.',
+    title: 'Agriculture Solar Solutions',
+    subtitle: 'Solar water pumps and reliable farm-focused energy systems.',
     collageTop:
       'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80',
     collageBottom:
@@ -109,69 +108,137 @@ const collageLayouts = [
 const FALLBACK_SOLAR_IMAGE =
   'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80'
 
-const solutionOfferings = [
+const productServices = [
   {
-    title: 'On-Grid & Hybrid Rooftop',
-    description: 'Design, engineering, supply, and commissioning for urban and rural rooftops.',
+    title: 'Rooftop Solar Solutions',
+    description: 'Solar panel installations for homes, offices, and industries.',
     icon: Sun,
+    image:
+      'https://i.pinimg.com/736x/6a/89/18/6a8918e22279d47fdc8184bebe6b5412.jpg',
   },
   {
-    title: 'Industrial Energy Offset',
-    description: 'Plant sizing and deployment to reduce daytime grid dependence and diesel usage.',
-    icon: Factory,
+    title: 'EPC Solar',
+    description: 'Complete Engineering, Procurement, and Construction services for solar projects.',
+    icon: FileCheck2,
+    image:
+      'https://i.pinimg.com/736x/ba/ec/87/baec87e364b54bcd8d0b9e0bdda335df.jpg',
   },
   {
-    title: 'Solar Pumps & Utility Applications',
-    description: 'Irrigation and decentralised power solutions with dependable generation plans.',
+    title: 'Solar Agriculture Solutions',
+    description: 'Solar-powered systems designed for agricultural use.',
     icon: Leaf,
+    image:
+      'https://i.pinimg.com/736x/37/55/bd/3755bd3a5ea752485e027b06c7b54de0.jpg',
   },
   {
-    title: 'O&M and Lifecycle Support',
-    description: 'Performance checks, preventive maintenance, and uptime-focused service.',
+    title: 'Solar Modules',
+    description: 'High-efficiency solar panels for energy generation.',
+    icon: Sun,
+    image:
+      'https://i.pinimg.com/736x/c5/d1/b1/c5d1b14a59fe43164e2829a8aae35ef8.jpg',
+  },
+  {
+    title: 'Solar Inverters',
+    description: 'Advanced inverters for efficient solar energy conversion.',
+    icon: Zap,
+    image:
+      'https://i.pinimg.com/736x/68/25/1c/68251c44641502b01862d66929c11309.jpg',
+  },
+  {
+    title: 'Solar Electric Water Pumps',
+    description: 'Solar-powered water pumps for irrigation and farming.',
+    icon: Leaf,
+    image:
+      'https://i.pinimg.com/736x/6e/0f/45/6e0f4503a1c58a5cc439b6bf6d9d15a5.jpg',
+  },
+  {
+    title: 'Solar Batteries',
+    description: 'Energy storage solutions using lithium battery technology.',
     icon: BadgeCheck,
+    image:
+      'https://i.pinimg.com/1200x/a0/ad/b1/a0adb18072d40f8a1d06482854302ee6.jpg',
+  },
+  {
+    title: 'Corporate Solar Solutions',
+    description: 'Customized solar energy systems for businesses and industries.',
+    icon: BadgeCheck,
+    image:
+      'https://i.pinimg.com/736x/9f/d1/df/9fd1dfac54ea6cdc37e267402cc926a3.jpg',
   },
 ]
 
 const aboutHighlights = [
   {
-    title: 'Easy Installation',
-    icon: Sun,
+    title: 'Quality and Reliability',
+    icon: BadgeCheck,
   },
   {
-    title: 'Quality Material',
-    icon: BadgeCheck,
+    title: 'Customer-Centric Approach',
+    icon: Building2,
+  },
+  {
+    title: 'Sustainability and Savings',
+    icon: Leaf,
+  },
+  {
+    title: 'Expertise and Experience',
+    icon: FileCheck2,
   },
 ]
 
 const scopeOfWork = [
-  'Site selection and generation feasibility',
-  'Detailed engineering and single line diagrams',
-  'Procurement support with component quality checks',
-  'Project execution supervision and commissioning',
-  'Approvals, paperwork, and subsidy coordination',
-  'After-sales maintenance and optimization',
+  {
+    title: 'Domestic Customers',
+    description: 'Subsidy-ready rooftop systems for homes and housing societies.',
+    icon: Home,
+  },
+  {
+    title: 'Commercial Establishments',
+    description: 'Energy-saving solar for offices, shops, and business facilities.',
+    icon: Building2,
+  },
+  {
+    title: 'Industrial Sectors',
+    description: 'High-load solar deployment for factories and production units.',
+    icon: Zap,
+  },
+  {
+    title: 'Institutions',
+    description: 'Reliable systems for schools, campuses, hospitals, and trusts.',
+    icon: BadgeCheck,
+  },
+  {
+    title: 'Project Developers',
+    description: 'End-to-end EPC collaboration from planning to commissioning.',
+    icon: FileCheck2,
+  },
+  {
+    title: 'Agricultural Sectors',
+    description: 'Solar pumping and farm-focused energy applications.',
+    icon: Leaf,
+  },
 ]
 
 const processSteps = [
-  'Energy audit and load profiling',
-  'System design and proposal finalization',
-  'Regulatory approvals and documentation',
-  'Procurement and installation',
-  'Testing, commissioning, and handover',
-  'Performance tracking and maintenance',
+  'Government subsidies make solar adoption more affordable than ever.',
+  'Switching to solar helps reduce electricity bills and improve long-term savings.',
+  'Renewable energy adoption directly supports environmental sustainability.',
+  'Solar deployment creates stronger energy independence for homes and businesses.',
+  'Reliable technology now enables scalable projects from homes to industries.',
+  'Early adopters lead the transition to a greener future.',
 ]
 
 const whyGnp = [
   {
-    title: 'Complete Approval & Paperwork Support',
-    icon: FileCheck2,
+    title: 'Advanced solar technology with high-quality components',
+    icon: BadgeCheck,
   },
   {
-    title: 'Quality Components with Engineered Structures',
+    title: 'Tailored solutions with strong lifecycle support',
     icon: Building2,
   },
   {
-    title: 'Fast Local Service and O&M Response',
+    title: 'Committed to local community-focused sustainable development',
     icon: Wrench,
   },
 ]
@@ -193,8 +260,8 @@ const staggerIn = {
   show: { transition: { staggerChildren: 0.08 } },
 }
 
-const DEFAULT_HOME_BILL = '2500'
-const DEFAULT_COMMERCIAL_BILL = '15000'
+const DEFAULT_HOME_BILL = '0'
+const DEFAULT_COMMERCIAL_BILL = '0'
 
 function AnimatedCounter({ value, prefix = '', suffix = '' }) {
   const [displayValue, setDisplayValue] = useState(0)
@@ -287,7 +354,7 @@ function HomePage({ onOpenCalculator }) {
         <div className="relative mx-auto grid h-full w-full max-w-7xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_1fr] lg:px-8">
           <div className="max-w-3xl text-white">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-200">
-              Green Nation Power
+              {COMPANY_INFO.name} - {COMPANY_INFO.tagline}
             </p>
             <h2 className="mt-3 font-montserrat text-3xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
               {heroBanners[activeBannerIndex].title}
@@ -297,13 +364,13 @@ function HomePage({ onOpenCalculator }) {
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               <span className="rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold tracking-wide">
-                Rooftop Solar
+                Rooftop Solar Systems
               </span>
               <span className="rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold tracking-wide">
-                Commercial Plants
+                Solar Inverters
               </span>
               <span className="rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-semibold tracking-wide">
-                EPC Projects
+                Agriculture Water Pumps
               </span>
             </div>
             <div className="mt-6 flex flex-wrap gap-2">
@@ -406,7 +473,7 @@ function HomePage({ onOpenCalculator }) {
                   <p className="text-sm text-slate-500">Enter Monthly Electricity Bill</p>
                   <input
                     type="number"
-                    min="500"
+                    min="0"
                     value={monthlyBillInput}
                     onChange={(event) => setMonthlyBillInput(event.target.value)}
                     className="mt-1 w-full bg-transparent text-2xl font-semibold outline-none"
@@ -499,14 +566,11 @@ function HomePage({ onOpenCalculator }) {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeUp}
-        className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-white to-white py-16"
+        className="relative overflow-hidden bg-white py-16"
       >
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.22),transparent_65%)]" />
-        <div className="pointer-events-none absolute -left-24 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full bg-emerald-100/60 blur-3xl" />
         <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:px-8">
           <div className="relative">
-            <img src={gnpLogo} alt="Green Nation Power" className="mb-5 h-16 w-auto" />
-            <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-700">
+            <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700">
               <MapPin className="h-3.5 w-3.5" />
               End-to-End Solar Partner
             </p>
@@ -514,12 +578,13 @@ function HomePage({ onOpenCalculator }) {
               Complete Solar Energy Solutions for Homes, Businesses, and EPC Projects.
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
-              From design and approvals to installation and maintenance, we build reliable solar systems
-              that lower electricity cost and improve long-term energy security.
+              Welcome to Green Nation Power, your trusted partner in sustainable energy solutions
+              based in Uruli Kanchan, Pune. As pioneers in the solar energy industry, we help
+              communities and businesses harness the power of the sun.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button onClick={() => onOpenCalculator('residential')}>Calculate Savings</Button>
-              <Button to="/projects" variant="outline">
+              <Button to="/projects" variant="outline" className="border-brand-navy text-brand-navy hover:bg-slate-100">
                 View Projects
               </Button>
             </div>
@@ -566,8 +631,7 @@ function HomePage({ onOpenCalculator }) {
                   Your Trusted Partner For <span className="text-brand-green">Rooftop Solar</span> Solutions
                 </h2>
                 <p className="mt-4 max-w-2xl text-lg text-slate-600">
-                  Green Nation Power delivers end-to-end solar services from design and installation to
-                  support, using quality components and practical engineering standards.
+                  {COMPANY_INFO.mission}
                 </p>
 
                 <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -591,25 +655,13 @@ function HomePage({ onOpenCalculator }) {
                   })}
                 </Motion.div>
 
-                <Button className="mt-7">Discover More</Button>
+                <Button to="/about" className="mt-7">Know More</Button>
               </article>
 
               <div className="relative mx-auto w-full max-w-xl">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="relative h-72 overflow-hidden rounded-[42px] bg-gradient-to-b from-sky-300 via-emerald-200 to-sky-500 md:h-96">
-                    <img
-                      src={gnpLogo}
-                      alt="Solar energy visual"
-                      className="h-full w-full object-cover opacity-35"
-                    />
-                  </div>
-                  <div className="mt-10 h-72 overflow-hidden rounded-[42px] bg-gradient-to-b from-slate-100 via-slate-200 to-slate-300 md:h-96">
-                    <img
-                      src={gnpLogo}
-                      alt="Solar installation visual"
-                      className="h-full w-full object-contain p-10 opacity-50"
-                    />
-                  </div>
+                  <div className="relative h-72 overflow-hidden rounded-[42px] bg-gradient-to-b from-sky-300 via-emerald-200 to-sky-500 md:h-96" />
+                  <div className="mt-10 h-72 overflow-hidden rounded-[42px] bg-gradient-to-b from-slate-100 via-slate-200 to-slate-300 md:h-96" />
                 </div>
 
                 <div className="absolute left-1/2 top-1/2 flex h-36 w-36 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-8 border-bg-light bg-brand-green text-center text-white shadow-lg">
@@ -629,47 +681,47 @@ function HomePage({ onOpenCalculator }) {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeUp}
-        className="bg-white py-14"
-      >
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Our Scope of Work</h2>
-          <Motion.ul variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-6 grid gap-3 md:grid-cols-2">
-            {scopeOfWork.map((item) => (
-              <Motion.li key={item} variants={fadeUp} className="flex items-start gap-2 rounded-xl border border-slate-200 p-4 text-slate-700 transition hover:border-emerald-300 hover:shadow-sm">
-                <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-brand-green" />
-                <span>{item}</span>
-              </Motion.li>
-            ))}
-          </Motion.ul>
-        </div>
-      </Motion.section>
-
-      <Motion.section
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeUp}
         className="relative overflow-hidden bg-white py-14"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.15),transparent_65%)]" />
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Solutions We Offer</h2>
+          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Products & Services</h2>
           <p className="mt-2 max-w-3xl text-base text-slate-600">
-            Structured offerings for every scale of deployment, from residential rooftops to industrial
-            energy applications.
+            Green Nation Power provides the following solar solutions:
           </p>
 
-          <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-2">
-            {solutionOfferings.map((item) => {
+          <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {productServices.map((item) => {
               const Icon = item.icon
 
               return (
-                <Motion.article key={item.title} variants={fadeUp} className="rounded-xl border border-slate-200 bg-white/95 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-emerald-50 text-brand-green">
+                <Motion.article
+                  key={item.title}
+                  variants={fadeUp}
+                  className="group relative h-72 overflow-hidden rounded-2xl border border-slate-200 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    onError={(event) => {
+                      event.currentTarget.onerror = null
+                      event.currentTarget.src = FALLBACK_SOLAR_IMAGE
+                    }}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/55 to-brand-navy/10 transition duration-300 group-hover:from-brand-navy/95 group-hover:via-brand-navy/70" />
+
+                  <div className="absolute left-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-brand-green">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="mt-3 font-montserrat text-xl font-semibold text-brand-navy">{item.title}</h3>
-                  <p className="mt-2 text-slate-600">{item.description}</p>
+
+                  <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+                    <h3 className="font-montserrat text-lg font-semibold leading-snug">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed opacity-100 transition duration-300 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                      {item.description}
+                    </p>
+                  </div>
                 </Motion.article>
               )
             })}
@@ -682,10 +734,50 @@ function HomePage({ onOpenCalculator }) {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeUp}
+        className="relative overflow-hidden bg-white py-16"
+      >
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(16,185,129,0.14),transparent_35%),radial-gradient(circle_at_85%_20%,rgba(15,23,42,0.08),transparent_35%)]" />
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="font-montserrat text-3xl font-bold text-brand-navy sm:text-4xl">Sectors We Serve</h2>
+          <p className="mt-3 max-w-3xl text-base text-slate-600">
+            Purpose-built solar solutions tailored for each customer category.
+          </p>
+          <Motion.ul variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-2">
+            {scopeOfWork.map((item) => {
+              const Icon = item.icon
+
+              return (
+                <Motion.li
+                  key={item.title}
+                  variants={fadeUp}
+                  className="group rounded-2xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-emerald-50/30 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg"
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-brand-green shadow-sm ring-1 ring-slate-200 transition duration-300 group-hover:bg-brand-green group-hover:text-white group-hover:ring-brand-green">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <p className="font-montserrat text-xl font-semibold text-brand-navy">{item.title}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
+                    </div>
+                    <ArrowRight className="ml-auto mt-1 h-4 w-4 shrink-0 text-brand-green transition duration-300 group-hover:translate-x-1" />
+                  </div>
+                </Motion.li>
+              )
+            })}
+          </Motion.ul>
+        </div>
+      </Motion.section>
+
+      <Motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeUp}
         className="bg-bg-light py-14"
       >
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Our Work Process</h2>
+          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Seize The Solar Opportunity</h2>
           <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {processSteps.map((step, index) => (
               <Motion.article key={step} variants={fadeUp} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
@@ -707,7 +799,7 @@ function HomePage({ onOpenCalculator }) {
         className="bg-white py-14"
       >
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Why GNP</h2>
+          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Why Green Nation Power</h2>
           <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-3">
             {whyGnp.map((item) => {
               const Icon = item.icon
@@ -727,11 +819,15 @@ function HomePage({ onOpenCalculator }) {
         </div>
       </Motion.section>
 
-      <section className="bg-brand-navy py-14 text-white">
+      <section className="bg-bg-light py-14 text-brand-navy">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="font-montserrat text-3xl font-bold">Best Solar Provider Pages by City</h2>
-          <p className="mt-2 max-w-3xl text-slate-300">
+          <p className="mt-2 max-w-3xl text-slate-600">
             Browse our city-focused pages to explore local service availability and project execution.
+          </p>
+          <p className="mt-3 max-w-3xl text-slate-600">
+            Join Green Nation Power in building a sustainable future. Together, we can harness the
+            power of the sun and make a lasting impact on the planet.
           </p>
 
           <div className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
@@ -739,7 +835,7 @@ function HomePage({ onOpenCalculator }) {
               <Link
                 key={city.slug}
                 to={getLocationPagePath(city.slug)}
-                className="rounded-lg border border-slate-700 bg-slate-900/40 px-4 py-3 text-base font-semibold text-slate-100 transition hover:border-brand-green hover:text-brand-green"
+                className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-base font-semibold text-brand-navy transition hover:border-brand-green hover:text-brand-green"
               >
                 Best Solar Provider in {city.name}
               </Link>
@@ -748,12 +844,13 @@ function HomePage({ onOpenCalculator }) {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Button onClick={() => onOpenCalculator('commercial')}>Request Site Survey</Button>
-            <Button to="/locations" variant="outline" className="border-white text-white hover:bg-white/10">
+            <Button to="/locations" variant="outline" className="border-brand-navy bg-transparent text-brand-navy hover:bg-slate-100">
               Explore Service Areas
             </Button>
           </div>
         </div>
       </section>
+
     </Motion.div>
   )
 }

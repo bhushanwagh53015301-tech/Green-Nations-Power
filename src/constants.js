@@ -1,5 +1,28 @@
-export const CONTACT_PHONE = '+91 98765 43210'
-export const CONTACT_EMAIL = 'hello@greennationspower.in'
+export const COMPANY_INFO = {
+  name: 'Green Nation Power',
+  tagline: 'Solar Expert Solution',
+  mission:
+    'To create a greener and more sustainable future by harnessing solar energy with quality, reliability, sustainability, and excellent customer service.',
+  email: 'greennationsuk@gmail.com',
+  phones: ['9765668899', '9923701234', '7720925454'],
+  addresses: {
+    pune: {
+      title: 'Pune Office',
+      address:
+        'Shree Shivratna, Opposite Rajarshi Shahu Bank, Pune-Solapur Road, Uruli Kanchan, Tal-Haveli, Dist Pune - 412202',
+    },
+    pimpriChinchwad: {
+      title: 'Pimpri Chinchwad Office',
+      address:
+        'Gat No. 593, Matoshree Chikhali (Jadhavwadi), Tal-Haveli, Dist Pune - 411062',
+    },
+  },
+}
+
+export const CONTACT_PHONE = COMPANY_INFO.phones[0]
+export const CONTACT_EMAIL = COMPANY_INFO.email
+export const OFFICE_ADDRESSES = COMPANY_INFO.addresses
+export const COMPANY_TAGLINE = COMPANY_INFO.tagline
 export const WHATSAPP_NUMBER = '919876543210'
 
 export const DISTANCE_OPTIONS = ['< 2km', '2-5km', '> 5km']
@@ -19,6 +42,19 @@ export const RURAL_KW_PER_ACRE = 400
 export const RURAL_SITE_DEVELOPMENT_PER_ACRE = 150000
 
 export const TARGET_FAST_TRACK_PINCODES = ['412202', '412201', '412216', '412220']
+export const PINCODE_LOCATION_MAP = {
+  '412202': 'Uruli Kanchan, Pune',
+  '412201': 'Loni Kalbhor, Pune',
+  '412216': 'Saswad, Pune',
+  '412220': 'Theur, Pune',
+  '413106': 'Indapur, Pune',
+  '413130': 'Baramati, Pune',
+  '412203': 'Daund, Pune',
+  '412214': 'Yavat, Pune',
+  '412211': 'Kedgaon, Pune',
+  '413105': 'Bhigwan, Pune',
+  '412303': 'Jejuri, Pune',
+}
 
 export const WHATSAPP_CONSULTATION_MESSAGE =
   'Hi GNP, I am looking for a solar consultation.'
