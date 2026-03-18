@@ -319,7 +319,12 @@ function HomePage({ onOpenCalculator }) {
   const annualEnergy = systemSizeKw * 4 * 365
   const annualSavings = monthlyBill * 12
   const basePrice = systemSizeKw * RESIDENTIAL_COST_PER_KW
-  const subsidy = isHomeSolar ? Math.min(systemSizeKw * 30000 + 10000, RESIDENTIAL_SUBSIDY_CAP) : 0
+  const subsidy = isHomeSolar
+    ? Math.min(
+      systemSizeKw <= 1 ? 30000 : systemSizeKw <= 2 ? 60000 : 78000,
+      RESIDENTIAL_SUBSIDY_CAP,
+    )
+    : 0
 
   const calculatorHighlights = [
     { label: 'System Size', value: `${formatNumber(systemSizeKw)} kW`, icon: Calculator },
@@ -328,6 +333,13 @@ function HomePage({ onOpenCalculator }) {
     { label: 'Annual Savings', value: formatCurrency(annualSavings), icon: IndianRupee },
     { label: 'Price (Excluding Subsidy)', value: formatCurrency(basePrice), icon: IndianRupee },
     { label: 'Subsidy', value: formatCurrency(subsidy), icon: BadgePercent },
+  ]
+
+  const subsidySnapshot = [
+    { label: 'System Size', value: 'Up to 1 kW', note: formatCurrency(30000) },
+    { label: 'System Size', value: 'Up to 2 kW', note: formatCurrency(60000) },
+    { label: 'System Size', value: '3 to 5 kW', note: formatCurrency(78000) },
+    { label: 'Commercial / Societies', value: 'Per kW', note: `${formatCurrency(18000)} / kW` },
   ]
 
   const activeCollageLayout = collageLayouts[activeBannerIndex % collageLayouts.length]
@@ -518,6 +530,35 @@ function HomePage({ onOpenCalculator }) {
               )
             })}
           </Motion.div>
+        </div>
+
+        <div className="mx-auto mt-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-white/15 bg-white/10 p-6 shadow-lg backdrop-blur-sm">
+            <div className="flex flex-wrap items-end justify-between gap-3">
+              <h3 className="font-montserrat text-2xl font-bold text-white">Subsidy & Pricing Snapshot</h3>
+              <p className="text-sm text-emerald-100">
+                Government support and commercial rates based on system size.
+              </p>
+            </div>
+            <p className="mt-2 text-xs text-emerald-100">
+              Residential subsidy shown by system size (kW). Commercial is a per-kW rate.
+            </p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {subsidySnapshot.map((item) => (
+                <Motion.article
+                  key={item.label}
+                  variants={fadeUp}
+                  className="rounded-xl border border-white/20 bg-white/90 p-5 text-brand-navy shadow-sm"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600">
+                    {item.label}
+                  </p>
+                  <p className="mt-2 text-2xl font-bold text-brand-navy">{item.value}</p>
+                  <p className="mt-1 text-sm text-slate-600">{item.note}</p>
+                </Motion.article>
+              ))}
+            </div>
+          </div>
         </div>
       </Motion.section>
 

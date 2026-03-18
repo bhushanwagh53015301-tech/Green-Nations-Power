@@ -1,10 +1,10 @@
 export const COMPANY_INFO = {
-  name: 'Green Nation Power',
+  name: 'Green Nations power',
   tagline: 'Solar Expert Solution',
   mission:
     'To create a greener and more sustainable future by harnessing solar energy with quality, reliability, sustainability, and excellent customer service.',
   email: 'greennationsuk@gmail.com',
-  phones: ['9765668899', '9923701234', '7720925454'],
+  phones: ['9765668899'],
   addresses: {
     pune: {
       title: 'Pune Office',
@@ -23,7 +23,7 @@ export const CONTACT_PHONE = COMPANY_INFO.phones[0]
 export const CONTACT_EMAIL = COMPANY_INFO.email
 export const OFFICE_ADDRESSES = COMPANY_INFO.addresses
 export const COMPANY_TAGLINE = COMPANY_INFO.tagline
-export const WHATSAPP_NUMBER = '919876543210'
+export const WHATSAPP_NUMBER = '919765668899'
 
 export const DISTANCE_OPTIONS = ['< 2km', '2-5km', '> 5km']
 
@@ -58,3 +58,4 @@ export const PINCODE_LOCATION_MAP = {
 
 export const WHATSAPP_CONSULTATION_MESSAGE =
   'Hi GNP, I am looking for a solar consultation.'
+

@@ -4,6 +4,7 @@ import CalculatorOverlay from './components/calculator/CalculatorOverlay'
 import AppLayout from './components/layout/AppLayout'
 import AboutPage from './pages/AboutPage'
 import CommercialPage from './pages/CommercialPage'
+import ContactPage from './pages/ContactPage'
 import EpcPage from './pages/EpcPage'
 import HomePage from './pages/HomePage'
 import LocationLandingPage from './pages/LocationLandingPage'
@@ -50,6 +51,7 @@ function App() {
           />
           <Route path="/locations" element={<LocationsPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

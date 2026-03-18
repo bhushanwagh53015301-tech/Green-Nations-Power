@@ -1,19 +1,40 @@
+import { useState } from 'react'
 import { motion as Motion } from 'framer-motion'
 import { IndianRupee, Lightbulb, ShieldCheck, Target, Users, Wrench } from 'lucide-react'
 import Button from '../components/ui/Button'
 
-const visionMissionPoints = [
+const visionMissionTabs = [
   {
+    id: 'vision',
+    tabLabel: 'Vision',
     title: 'Our Vision',
     description:
       'To become a global solar leader by driving clean, greener, and more sustainable energy solutions.',
+    extraDescription:
+      'We envision communities and industries powered by reliable clean energy, where every project contributes to long-term savings, resilience, and environmental responsibility.',
     icon: Target,
+    points: [
+      'Lead clean-energy adoption across domestic and commercial sectors.',
+      'Promote reliable, scalable, and future-ready solar infrastructure.',
+      'Create long-term environmental impact through renewable deployment.',
+    ],
+    image: 'https://img.icons8.com/fluency/512/wind-turbine.png',
   },
   {
+    id: 'mission',
+    tabLabel: 'Mission',
     title: 'Our Mission',
     description:
       'Deliver innovative, high-quality solar systems that empower homes and businesses with lower energy cost.',
+    extraDescription:
+      'Our mission is to provide transparent consultation, precise engineering, quality installation, and lifecycle support so customers get measurable performance from day one.',
     icon: Lightbulb,
+    points: [
+      'Design practical systems tailored to customer energy requirements.',
+      'Use quality components with disciplined engineering execution.',
+      'Provide responsive support throughout the project lifecycle.',
+    ],
+    image: 'https://img.icons8.com/fluency/512/renewable-energy.png',
   },
 ]
 
@@ -41,6 +62,10 @@ const whyChoosePoints = [
 ]
 
 function AboutPage() {
+  const [activeTab, setActiveTab] = useState('vision')
+  const activeVisionMission = visionMissionTabs.find((item) => item.id === activeTab) ?? visionMissionTabs[0]
+  const ActiveIcon = activeVisionMission.icon
+
   return (
     <Motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -50,39 +75,73 @@ function AboutPage() {
     >
       <section className="bg-[#f3f5f4] py-16">
         <div className="mx-auto w-full max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-8 lg:grid-cols-2">
-            <article className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-              <p className="inline-flex rounded-md bg-brand-green px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-navy">
-                Our Vision & Mission
-              </p>
-              <h1 className="mt-4 font-montserrat text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
-                Innovative Solar Solutions For <span className="text-brand-green">Modern Living</span>
-              </h1>
-              <div className="mt-6 space-y-4">
-                {visionMissionPoints.map((item) => {
-                  const Icon = item.icon
+          <div className="rounded-[24px] border border-slate-200 bg-white p-5 sm:p-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2">
+              {visionMissionTabs.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setActiveTab(item.id)}
+                  className={`h-14 text-center font-montserrat text-2xl font-semibold transition sm:text-3xl ${
+                    activeTab === item.id
+                      ? 'bg-brand-green text-brand-navy'
+                      : 'bg-white text-brand-navy hover:bg-emerald-50'
+                  }`}
+                >
+                  {item.title}
+                </button>
+              ))}
+            </div>
+            <div className="h-0.5 bg-brand-green/50" />
 
-                  return (
-                    <div key={item.title} className="flex items-start gap-3">
-                      <span className="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-brand-green">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <div>
-                        <h3 className="text-lg font-semibold text-brand-navy">{item.title}</h3>
-                        <p className="text-slate-600">{item.description}</p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </article>
+            <div className="grid items-center gap-10 px-2 py-10 lg:grid-cols-2 lg:px-6 lg:py-12">
+              <Motion.article
+                key={`${activeVisionMission.id}-text`}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-emerald-100 text-brand-green">
+                    <ActiveIcon className="h-5 w-5" />
+                  </span>
+                  <h2 className="font-montserrat text-4xl font-extrabold text-brand-green sm:text-5xl">
+                    {activeVisionMission.title}
+                  </h2>
+                </div>
+                <p className="mt-6 max-w-2xl text-xl leading-relaxed text-slate-800">
+                  {activeVisionMission.description}
+                </p>
+                <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-700">
+                  {activeVisionMission.extraDescription}
+                </p>
+                <ul className="mt-5 max-w-2xl space-y-2 text-base text-slate-700">
+                  {activeVisionMission.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2">
+                      <span className="mt-2 inline-block h-2 w-2 rounded-full bg-brand-green" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Motion.article>
 
-            <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm">
-              <img
-                src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1400&q=80"
-                alt="Solar rooftop installation"
-                className="h-full min-h-[350px] w-full object-cover"
-              />
+              <Motion.div
+                key={`${activeVisionMission.id}-image`}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.2 }}
+                className="min-h-[260px]"
+              >
+                <img
+                  src={activeVisionMission.image}
+                  alt={`${activeVisionMission.title} graphic`}
+                  onError={(event) => {
+                    event.currentTarget.onerror = null
+                    event.currentTarget.src = 'https://img.icons8.com/fluency/512/sun.png'
+                  }}
+                  className="mx-auto h-[320px] w-full max-w-[520px] object-contain"
+                />
+              </Motion.div>
             </div>
           </div>
 
@@ -112,7 +171,7 @@ function AboutPage() {
                 <span className="rounded-md border border-slate-200 px-3 py-2">National Rooftop Program</span>
                 <span className="rounded-md border border-slate-200 px-3 py-2">Transparent Proposal Model</span>
               </div>
-              <Button className="mt-6">Need Help? Contact Us</Button>
+              <Button to="/contact" className="mt-6">Need Help? Contact Us</Button>
             </article>
           </div>
 

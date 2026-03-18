@@ -6,6 +6,11 @@
   color: #0a192f;
 }
 
+html {
+  height: 100%;
+  overscroll-behavior-y: none;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -13,16 +18,21 @@
 body {
   margin: 0;
   min-width: 320px;
+  height: 100%;
   font-family: 'Inter', sans-serif;
   color: #0a192f;
   line-height: 1.625;
-  background: #ffffff;
+  background: #0a192f;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 #root {
-  min-height: 100vh;
+  min-height: 100%;
+  overflow-x: hidden;
+  background: #ffffff;
 }
 
 h1,

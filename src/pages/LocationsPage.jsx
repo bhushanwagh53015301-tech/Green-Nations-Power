@@ -10,8 +10,8 @@ function LocationsPage() {
   return (
     <div className="bg-bg-light py-12">
       <SeoMeta
-        title="Solar Installation Areas in Pune District | Green Nation Power"
-        description="Explore Green Nation Power city service pages across Pune district including Indapur, Bhigwan, Yavat, Daund, and nearby areas."
+        title="Solar Installation Areas in Pune District | Green Nations power"
+        description="Explore Green Nations power city service pages across Pune district including Indapur, Bhigwan, Yavat, Daund, and nearby areas."
       />
 
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -49,3 +49,4 @@ function LocationsPage() {
 }
 
 export default LocationsPage
+

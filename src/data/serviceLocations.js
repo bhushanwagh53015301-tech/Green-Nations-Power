@@ -1,23 +1,33 @@
 export const SERVICE_LOCATIONS = [
   {
-    name: 'Indapur',
-    slug: 'indapur',
-    subtitle: 'Residential rooftops, farm loads, and small industrial feeders.',
+    name: 'Pune City',
+    slug: 'pune-city',
+    subtitle: 'Urban rooftop solar systems for homes, offices, and institutions.',
   },
   {
-    name: 'Bhigwan',
-    slug: 'bhigwan',
-    subtitle: 'Agri-heavy demand profile with hybrid and net-metering needs.',
+    name: 'Haveli',
+    slug: 'haveli',
+    subtitle: 'Suburban residential and society solar with fast installation support.',
   },
   {
-    name: 'Yavat',
-    slug: 'yavat',
-    subtitle: 'Fast-growing peri-urban residential and commercial solar demand.',
+    name: 'Khed',
+    slug: 'khed',
+    subtitle: 'Rural and industrial solar planning with EPC execution.',
   },
   {
-    name: 'Kedgaon',
-    slug: 'kedgaon',
-    subtitle: 'Rooftop and small-scale commercial solar optimization projects.',
+    name: 'Ambegaon',
+    slug: 'ambegaon',
+    subtitle: 'Residential rooftops and agriculture-focused solar solutions.',
+  },
+  {
+    name: 'Junnar',
+    slug: 'junnar',
+    subtitle: 'Mixed residential and farm solar with subsidy-ready systems.',
+  },
+  {
+    name: 'Shirur',
+    slug: 'shirur',
+    subtitle: 'Commercial rooftops and industrial load reduction programs.',
   },
   {
     name: 'Daund',
@@ -25,19 +35,9 @@ export const SERVICE_LOCATIONS = [
     subtitle: 'Industrial and cooperative segment focused OPEX reduction.',
   },
   {
-    name: 'Loni Kalbhor',
-    slug: 'loni-kalbhor',
-    subtitle: 'Urban-edge domestic and society-level rooftop opportunities.',
-  },
-  {
-    name: 'Theur',
-    slug: 'theur',
-    subtitle: 'Residential savings and compliant Mahavitaran execution.',
-  },
-  {
-    name: 'Saswad',
-    slug: 'saswad',
-    subtitle: 'Mixed-use properties requiring robust long-life EPC systems.',
+    name: 'Indapur',
+    slug: 'indapur',
+    subtitle: 'Residential rooftops, farm loads, and small industrial feeders.',
   },
   {
     name: 'Baramati',
@@ -45,9 +45,34 @@ export const SERVICE_LOCATIONS = [
     subtitle: 'Large farm and industry-oriented solar ROI engineering.',
   },
   {
-    name: 'Jejuri',
-    slug: 'jejuri',
-    subtitle: 'Residential and land-linked EPC consultation demand cluster.',
+    name: 'Purandhar',
+    slug: 'purandhar',
+    subtitle: 'Residential and village cluster solar with EPC support.',
+  },
+  {
+    name: 'Bhor',
+    slug: 'bhor',
+    subtitle: 'Rural solar pumps and residential rooftop demand.',
+  },
+  {
+    name: 'Velhe',
+    slug: 'velhe',
+    subtitle: 'Remote-area solar electrification and rooftop systems.',
+  },
+  {
+    name: 'Mulshi',
+    slug: 'mulshi',
+    subtitle: 'Premium residential and resort solar installations.',
+  },
+  {
+    name: 'Mawal',
+    slug: 'mawal',
+    subtitle: 'Industrial corridor rooftops and commercial solar plants.',
+  },
+  {
+    name: 'Pimpri-Chinchwad City',
+    slug: 'pimpri-chinchwad-city',
+    subtitle: 'High-density urban and industrial solar deployments.',
   },
 ]
 

@@ -423,7 +423,7 @@ function SolarReportDocument({ report }) {
 
         <View style={styles.footer} fixed>
           <Text style={styles.footerText}>
-            Green Nation Power | Uruli Kanchan | Contact: {contactPhone} |
+            Green Nations power | Uruli Kanchan | Contact: {contactPhone} |
             {'  '}
             Generated specifically for {clientName}
           </Text>
@@ -434,3 +434,4 @@ function SolarReportDocument({ report }) {
 }
 
 export default SolarReportDocument
+
