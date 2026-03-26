@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion as Motion } from 'framer-motion'
-import { IndianRupee, Lightbulb, ShieldCheck, Target, Users, Wrench } from 'lucide-react'
+import { IndianRupee, Rocket, ShieldCheck, Target, Users, Wrench } from 'lucide-react'
 import Button from '../components/ui/Button'
 
 const visionMissionTabs = [
@@ -18,7 +18,7 @@ const visionMissionTabs = [
       'Promote reliable, scalable, and future-ready solar infrastructure.',
       'Create long-term environmental impact through renewable deployment.',
     ],
-    image: 'https://img.icons8.com/fluency/512/wind-turbine.png',
+    image: 'https://img.icons8.com/fluency/512/goal.png',
   },
   {
     id: 'mission',
@@ -28,13 +28,13 @@ const visionMissionTabs = [
       'Deliver innovative, high-quality solar systems that empower homes and businesses with lower energy cost.',
     extraDescription:
       'Our mission is to provide transparent consultation, precise engineering, quality installation, and lifecycle support so customers get measurable performance from day one.',
-    icon: Lightbulb,
+    icon: Rocket,
     points: [
       'Design practical systems tailored to customer energy requirements.',
       'Use quality components with disciplined engineering execution.',
       'Provide responsive support throughout the project lifecycle.',
     ],
-    image: 'https://img.icons8.com/fluency/512/renewable-energy.png',
+    image: 'https://img.icons8.com/fluency/512/rocket.png',
   },
 ]
 
@@ -63,8 +63,30 @@ const whyChoosePoints = [
 
 function AboutPage() {
   const [activeTab, setActiveTab] = useState('vision')
+  const [desktopCardHeight, setDesktopCardHeight] = useState(null)
+  const whyChooseCardRef = useRef(null)
   const activeVisionMission = visionMissionTabs.find((item) => item.id === activeTab) ?? visionMissionTabs[0]
   const ActiveIcon = activeVisionMission.icon
+
+  useEffect(() => {
+    const syncDesktopImageHeight = () => {
+      if (window.innerWidth < 1024) {
+        setDesktopCardHeight(null)
+        return
+      }
+
+      if (whyChooseCardRef.current) {
+        setDesktopCardHeight(whyChooseCardRef.current.offsetHeight)
+      }
+    }
+
+    syncDesktopImageHeight()
+    window.addEventListener('resize', syncDesktopImageHeight)
+
+    return () => {
+      window.removeEventListener('resize', syncDesktopImageHeight)
+    }
+  }, [])
 
   return (
     <Motion.div
@@ -186,8 +208,8 @@ function AboutPage() {
             </div>
           </div>
 
-          <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_1fr]">
-            <article className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <div className="grid items-start gap-8 lg:grid-cols-[1.1fr_1fr]">
+            <article ref={whyChooseCardRef} className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
               <p className="inline-flex rounded-md bg-brand-green px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-navy">
                 Why Choose Us
               </p>
@@ -215,19 +237,15 @@ function AboutPage() {
               </div>
             </article>
 
-            <div className="grid gap-4">
-              <div className="overflow-hidden rounded-[34px] border border-slate-200 bg-white shadow-sm">
+            <div className="mx-auto w-full max-w-[420px] lg:max-w-none">
+              <div
+                style={desktopCardHeight ? { height: `${desktopCardHeight}px` } : undefined}
+                className="min-h-[260px] overflow-hidden rounded-[34px] border border-slate-200 bg-white shadow-sm"
+              >
                 <img
-                  src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80"
-                  alt="Wind and solar farm"
-                  className="h-52 w-full object-cover"
-                />
-              </div>
-              <div className="overflow-hidden rounded-[34px] border border-slate-200 bg-white shadow-sm">
-                <img
-                  src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80"
+                  src="https://i.pinimg.com/1200x/9b/ca/e3/9bcae390dd4791507d72a1dda34de4c4.jpg"
                   alt="Solar panel technician"
-                  className="h-52 w-full object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </div>

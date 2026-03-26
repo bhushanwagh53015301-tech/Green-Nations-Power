@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion as Motion } from 'framer-motion'
 import {
-  ArrowRight,
   BadgeCheck,
   BadgePercent,
   Building2,
@@ -13,6 +12,7 @@ import {
   MapPin,
   Ruler,
   Sun,
+  Target,
   Wrench,
   Zap,
 } from 'lucide-react'
@@ -263,10 +263,10 @@ const seoKeywordPhrases = [
 ]
 
 const professionalCounters = [
-  { label: 'Projects Delivered', value: 250, suffix: '+' },
-  { label: 'Installed Capacity', value: 12, suffix: ' MW+' },
-  { label: 'Annual Client Savings', value: 8, prefix: 'Rs ', suffix: ' Cr+' },
-  { label: 'Avg. Support Response', value: 24, suffix: ' Hrs' },
+  { label: 'Projects Delivered', value: 250, suffix: '+', icon: FileCheck2 },
+  { label: 'Installed Capacity', value: 12, suffix: ' MW+', icon: Building2 },
+  { label: 'Annual Client Savings', value: 8, prefix: 'Rs ', suffix: ' Cr+', icon: IndianRupee },
+  { label: 'Avg. Support Response', value: 24, suffix: ' Hrs', icon: BadgeCheck },
 ]
 
 const fadeUp = {
@@ -596,8 +596,8 @@ function HomePage({ onOpenCalculator }) {
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.15),transparent_65%)]" />
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Products & Services</h2>
-          <p className="mt-2 max-w-3xl text-base text-slate-600">
+          <h2 className="text-center font-montserrat text-3xl font-bold text-brand-navy">Products & Services</h2>
+          <p className="mx-auto mt-2 max-w-3xl text-center text-base text-slate-600">
             Green Nation Power provides the following solar solutions:
           </p>
 
@@ -732,7 +732,10 @@ function HomePage({ onOpenCalculator }) {
       >
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-slate-200 bg-gradient-to-r from-white to-emerald-50 p-6 shadow-sm sm:p-8">
-            <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="flex flex-col items-center gap-3 text-center">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-brand-green ring-1 ring-emerald-200">
+                <Target className="h-6 w-6" />
+              </span>
               <h2 className="font-montserrat text-3xl font-bold text-brand-navy">
                 Performance At A Glance
               </h2>
@@ -752,10 +755,15 @@ function HomePage({ onOpenCalculator }) {
                 <Motion.article
                   key={`${item.label}-${item.value}`}
                   variants={fadeUp}
-                  className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+                  className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm"
                 >
+                  <div className="flex flex-col items-center gap-2">
+                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-brand-green ring-1 ring-emerald-200">
+                      <item.icon className="h-4 w-4" />
+                    </span>
+                    <p className="text-base font-medium text-slate-600">{item.label}</p>
+                  </div>
                   <AnimatedCounter value={item.value} prefix={item.prefix} suffix={item.suffix} />
-                  <p className="mt-2 text-base font-medium text-slate-600">{item.label}</p>
                 </Motion.article>
               ))}
             </Motion.div>
@@ -824,11 +832,11 @@ function HomePage({ onOpenCalculator }) {
       >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(16,185,129,0.14),transparent_35%),radial-gradient(circle_at_85%_20%,rgba(15,23,42,0.08),transparent_35%)]" />
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-montserrat text-3xl font-bold text-brand-navy sm:text-4xl">Sectors We Serve</h2>
-          <p className="mt-3 max-w-3xl text-base text-slate-600">
+          <h2 className="text-center font-montserrat text-3xl font-bold text-brand-navy sm:text-4xl">Sectors We Serve</h2>
+          <p className="mx-auto mt-3 max-w-3xl text-center text-base text-slate-600">
             Purpose-built solar solutions tailored for each customer category.
           </p>
-          <Motion.ul variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-2">
+          <Motion.ul variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
             {scopeOfWork.map((item) => {
               const Icon = item.icon
 
@@ -836,17 +844,16 @@ function HomePage({ onOpenCalculator }) {
                 <Motion.li
                   key={item.title}
                   variants={fadeUp}
-                  className="group rounded-2xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-emerald-50/30 p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg"
+                  className="group h-full rounded-2xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-emerald-50/30 p-4 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg"
                 >
-                  <div className="flex items-start gap-4">
-                    <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-brand-green shadow-sm ring-1 ring-slate-200 transition duration-300 group-hover:bg-brand-green group-hover:text-white group-hover:ring-brand-green">
+                  <div>
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white text-brand-green shadow-sm ring-1 ring-slate-200 transition duration-300 group-hover:bg-brand-green group-hover:text-white group-hover:ring-brand-green">
                       <Icon className="h-5 w-5" />
                     </span>
                     <div>
-                      <p className="font-montserrat text-xl font-semibold text-brand-navy">{item.title}</p>
-                      <p className="mt-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
+                      <p className="mt-3 font-montserrat text-lg font-semibold leading-tight text-brand-navy">{item.title}</p>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
                     </div>
-                    <ArrowRight className="ml-auto mt-1 h-4 w-4 shrink-0 text-brand-green transition duration-300 group-hover:translate-x-1" />
                   </div>
                 </Motion.li>
               )
@@ -863,7 +870,7 @@ function HomePage({ onOpenCalculator }) {
         className="bg-bg-light py-14"
       >
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Seize The Solar Opportunity</h2>
+          <h2 className="text-center font-montserrat text-3xl font-bold text-brand-navy">Seize The Solar Opportunity</h2>
           <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {processSteps.map((step, index) => (
               <Motion.article key={step} variants={fadeUp} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
@@ -886,7 +893,7 @@ function HomePage({ onOpenCalculator }) {
       >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(16,185,129,0.12),transparent_35%),radial-gradient(circle_at_90%_20%,rgba(10,25,47,0.08),transparent_35%)]" />
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <div className="mx-auto max-w-3xl text-center">
             <p className="inline-flex items-center rounded-full border border-brand-green/30 bg-emerald-50 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-brand-green">
               Why Choose Us
             </p>
@@ -924,11 +931,11 @@ function HomePage({ onOpenCalculator }) {
 
       <section className="bg-bg-light py-14 text-brand-navy">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-montserrat text-3xl font-bold">Best Solar Provider Pages by City</h2>
-          <p className="mt-2 max-w-3xl text-slate-600">
+          <h2 className="text-center font-montserrat text-3xl font-bold">Best Solar Provider Pages by City</h2>
+          <p className="mx-auto mt-2 max-w-3xl text-center text-slate-600">
             Browse our city-focused pages to explore local service availability and project execution.
           </p>
-          <p className="mt-3 max-w-3xl text-slate-600">
+          <p className="mx-auto mt-3 max-w-3xl text-center text-slate-600">
             Join Green Nation Power in building a sustainable future. Together, we can harness the
             power of the sun and make a lasting impact on the planet.
           </p>

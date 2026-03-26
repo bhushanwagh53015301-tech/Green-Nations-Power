@@ -109,7 +109,7 @@ function Footer() {
         </div>
       </div>
       <div className="mx-auto mt-10 w-full max-w-7xl border-t border-slate-700 px-4 pt-6 text-center text-sm text-slate-400 sm:px-6 lg:px-8">
-        Copyright {currentYear} Green Nation Power. All rights reserved.
+        Copyright {currentYear} Green Nation Power. All rights reserved. Developed by Webakoof.
       </div>
     </footer>
   )
