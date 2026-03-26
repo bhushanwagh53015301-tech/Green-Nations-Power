@@ -84,6 +84,11 @@ function Footer() {
                 Service Areas
               </Link>
             </li>
+            <li>
+              <Link to="/sitemap" className="hover:text-brand-green">
+                Sitemap
+              </Link>
+            </li>
           </ul>
         </div>
 

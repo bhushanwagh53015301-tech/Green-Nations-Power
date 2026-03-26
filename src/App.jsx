@@ -12,6 +12,7 @@ import LocationsPage from './pages/LocationsPage'
 import LegacyLocationRedirect from './pages/LegacyLocationRedirect'
 import ProjectsPage from './pages/ProjectsPage'
 import ResidentialPage from './pages/ResidentialPage'
+import SitemapPage from './pages/SitemapPage'
 
 function App() {
   const [calculatorState, setCalculatorState] = useState({
@@ -52,6 +53,7 @@ function App() {
           <Route path="/locations" element={<LocationsPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/sitemap" element={<SitemapPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
