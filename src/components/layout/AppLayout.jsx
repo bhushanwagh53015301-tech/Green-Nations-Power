@@ -6,6 +6,7 @@ import Footer from './Footer'
 import MobileStickyCta from './MobileStickyCta'
 import Navbar from './Navbar'
 import WhatsAppFloatingAction from './WhatsAppFloatingAction'
+import SiteSeoManager from '../seo/SiteSeoManager'
 
 function AppLayout({ onOpenCalculator }) {
   const { pathname } = useLocation()
@@ -21,6 +22,7 @@ function AppLayout({ onOpenCalculator }) {
       <main className="pb-20 md:pb-0">
         <Outlet />
       </main>
+      <SiteSeoManager />
       <Footer />
       <BackToTopButton />
       <WhatsAppFloatingAction />

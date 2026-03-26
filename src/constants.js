@@ -4,7 +4,7 @@ export const COMPANY_INFO = {
   mission:
     'To create a greener and more sustainable future by harnessing solar energy with quality, reliability, sustainability, and excellent customer service.',
   email: 'greennationsuk@gmail.com',
-  phones: ['9765668899'],
+  phones: ['8007008899', '9765668899'],
   addresses: {
     pune: {
       title: 'Pune Office',

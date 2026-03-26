@@ -107,6 +107,10 @@ const collageLayouts = [
 
 const FALLBACK_SOLAR_IMAGE =
   'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80'
+const ABOUT_SOLAR_TOP_IMAGE =
+  'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80'
+const ABOUT_SOLAR_BOTTOM_IMAGE =
+  'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80'
 
 const productServices = [
   {
@@ -118,7 +122,7 @@ const productServices = [
   },
   {
     title: 'EPC Solar',
-    description: 'Complete Engineering, Procurement, and Construction services for solar projects.',
+    description: 'Engineering, Procurement & Construction for solar projects.',
     icon: FileCheck2,
     image:
       'https://i.pinimg.com/736x/ba/ec/87/baec87e364b54bcd8d0b9e0bdda335df.jpg',
@@ -243,6 +247,21 @@ const whyGnp = [
   },
 ]
 
+const seoKeywordPhrases = [
+  'best solar rooftop solutions in Pune',
+  'best solar rooftop company',
+  'best solar rooftop installation services',
+  'best solar commercial solutions',
+  'best solar commercial rooftop company',
+  'best solar commerical solutions',
+  'best solar institution solutions',
+  'best solar institutional rooftop projects',
+  'solar solutions for schools, colleges, and hospitals',
+  'commercial and industrial solar installation',
+  'rooftop solar for homes and businesses',
+  'trusted solar EPC partner in Maharashtra',
+]
+
 const professionalCounters = [
   { label: 'Projects Delivered', value: 250, suffix: '+' },
   { label: 'Installed Capacity', value: 12, suffix: ' MW+' },
@@ -312,6 +331,7 @@ function HomePage({ onOpenCalculator }) {
     ? parsedMonthlyBill
     : fallbackBill
   const isHomeSolar = solarNeed === 'Home'
+  const calculatorTypeLabel = isHomeSolar ? 'RoofTop' : 'Commercial'
   const systemSizeKw = isHomeSolar
     ? Math.max(monthlyBill / 800, 0)
     : Math.max(monthlyBill / 1000, 0)
@@ -327,12 +347,12 @@ function HomePage({ onOpenCalculator }) {
     : 0
 
   const calculatorHighlights = [
-    { label: 'System Size', value: `${formatNumber(systemSizeKw)} kW`, icon: Calculator },
-    { label: 'Space Required', value: `${formatNumber(spaceRequired)} sqft`, icon: Ruler },
-    { label: 'Annual Energy Generated', value: `${formatNumber(annualEnergy)} Units`, icon: Zap },
-    { label: 'Annual Savings', value: formatCurrency(annualSavings), icon: IndianRupee },
-    { label: 'Price (Excluding Subsidy)', value: formatCurrency(basePrice), icon: IndianRupee },
-    { label: 'Subsidy', value: formatCurrency(subsidy), icon: BadgePercent },
+    { label: 'System Size *', value: `${formatNumber(systemSizeKw)} kW`, icon: Calculator },
+    { label: 'Space Required *', value: `${formatNumber(spaceRequired)} sqft`, icon: Ruler },
+    { label: 'Annual Energy Generated *', value: `${formatNumber(annualEnergy)} Units`, icon: Zap },
+    { label: 'Annual Savings *', value: formatCurrency(annualSavings), icon: IndianRupee },
+    { label: 'Price (Excluding Subsidy) *', value: formatCurrency(basePrice), icon: IndianRupee },
+    { label: 'Subsidy *', value: formatCurrency(subsidy), icon: BadgePercent },
   ]
 
   const subsidySnapshot = [
@@ -446,7 +466,7 @@ function HomePage({ onOpenCalculator }) {
               Green Nation Power
             </p>
             <h2 className="mt-5 font-montserrat text-4xl font-extrabold leading-tight sm:text-5xl">
-              Solar <span className="text-brand-green">RoofTop</span> Calculator
+              Solar <span className="text-brand-green">{calculatorTypeLabel}</span> Calculator
             </h2>
             <p className="mt-5 max-w-2xl text-xl text-slate-100">
               Use our solar calculator to estimate system size, roof space, annual generation,
@@ -509,13 +529,17 @@ function HomePage({ onOpenCalculator }) {
             </div>
           </div>
 
-          <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="grid gap-3 sm:grid-cols-2">
+          <div className="space-y-3">
+            <p className="text-sm font-medium text-emerald-100">
+              * Calculator results are estimated values and may vary after a detailed site survey.
+            </p>
+            <Motion.div variants={staggerIn} initial="show" animate="show" className="grid gap-3 sm:grid-cols-2">
             {calculatorHighlights.map((item) => {
               const Icon = item.icon
 
               return (
                 <Motion.article
-                  key={item.label}
+                  key={`${item.label}-${item.value}`}
                   variants={fadeUp}
                   className="rounded-xl bg-white p-5 text-brand-navy shadow-md"
                 >
@@ -529,7 +553,8 @@ function HomePage({ onOpenCalculator }) {
                 </Motion.article>
               )
             })}
-          </Motion.div>
+            </Motion.div>
+          </div>
         </div>
 
         <div className="mx-auto mt-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -546,7 +571,7 @@ function HomePage({ onOpenCalculator }) {
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {subsidySnapshot.map((item) => (
                 <Motion.article
-                  key={item.label}
+                  key={`${item.label}-${item.value}`}
                   variants={fadeUp}
                   className="rounded-xl border border-white/20 bg-white/90 p-5 text-brand-navy shadow-sm"
                 >
@@ -557,6 +582,142 @@ function HomePage({ onOpenCalculator }) {
                   <p className="mt-1 text-sm text-slate-600">{item.note}</p>
                 </Motion.article>
               ))}
+            </div>
+          </div>
+        </div>
+      </Motion.section>
+
+      <Motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeUp}
+        className="relative overflow-hidden bg-white py-14"
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.15),transparent_65%)]" />
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Products & Services</h2>
+          <p className="mt-2 max-w-3xl text-base text-slate-600">
+            Green Nation Power provides the following solar solutions:
+          </p>
+
+          <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {productServices.map((item) => {
+              const Icon = item.icon
+
+              return (
+                <Motion.article
+                  key={item.title}
+                  variants={fadeUp}
+                  className="group relative h-72 overflow-hidden rounded-2xl border border-slate-200 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    onError={(event) => {
+                      event.currentTarget.onerror = null
+                      event.currentTarget.src = FALLBACK_SOLAR_IMAGE
+                    }}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/55 to-brand-navy/10 transition duration-300 group-hover:from-brand-navy/95 group-hover:via-brand-navy/70" />
+
+                  <div className="absolute left-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-brand-green">
+                    <Icon className="h-5 w-5" />
+                  </div>
+
+                  <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+                    <h3 className="font-montserrat text-lg font-semibold leading-snug">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed opacity-100 transition duration-300 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
+                      {item.description}
+                    </p>
+                  </div>
+                </Motion.article>
+              )
+            })}
+          </Motion.div>
+        </div>
+      </Motion.section>
+
+      <Motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeUp}
+        className="bg-bg-light py-14"
+      >
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-6 shadow-sm sm:p-8">
+            <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.95fr]">
+              <article>
+                <p className="inline-flex items-center rounded-full border border-brand-green/30 bg-white px-4 py-2 text-sm font-semibold text-brand-green">
+                  About Us
+                </p>
+                <h2 className="mt-4 font-montserrat text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
+                  Your Trusted Partner For <span className="text-brand-green"> Solar</span> Solutions
+                </h2>
+                <p className="mt-4 max-w-2xl text-lg text-slate-600">
+                  {COMPANY_INFO.mission}
+                </p>
+
+                <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {aboutHighlights.map((item) => {
+                    const Icon = item.icon
+
+                    return (
+                      <Motion.div
+                        key={item.title}
+                        variants={fadeUp}
+                        className="rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-green text-white">
+                            <Icon className="h-5 w-5" />
+                          </span>
+                          <p className="text-lg font-semibold text-brand-navy">{item.title}</p>
+                        </div>
+                      </Motion.div>
+                    )
+                  })}
+                </Motion.div>
+
+                <Button to="/about" className="mt-7">Know More</Button>
+              </article>
+
+              <div className="relative mx-auto w-full max-w-xl">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="relative h-72 overflow-hidden rounded-[42px] bg-slate-100 md:h-96">
+                    <img
+                      src={ABOUT_SOLAR_TOP_IMAGE}
+                      alt="Rooftop solar installation"
+                      onError={(event) => {
+                        event.currentTarget.onerror = null
+                        event.currentTarget.src = FALLBACK_SOLAR_IMAGE
+                      }}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="mt-10 h-72 overflow-hidden rounded-[42px] bg-slate-100 md:h-96">
+                    <img
+                      src={ABOUT_SOLAR_BOTTOM_IMAGE}
+                      alt="Solar panels in sunlight"
+                      onError={(event) => {
+                        event.currentTarget.onerror = null
+                        event.currentTarget.src = FALLBACK_SOLAR_IMAGE
+                      }}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                <div className="absolute left-1/2 top-1/2 flex h-36 w-36 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-8 border-bg-light bg-brand-green text-center text-white shadow-lg">
+                  <p className="font-montserrat text-3xl font-extrabold leading-none">
+                    10+
+                    <span className="mt-2 block text-base font-semibold">Years Of Experience</span>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -589,7 +750,7 @@ function HomePage({ onOpenCalculator }) {
             >
               {professionalCounters.map((item) => (
                 <Motion.article
-                  key={item.label}
+                  key={`${item.label}-${item.value}`}
                   variants={fadeUp}
                   className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
                 >
@@ -648,122 +809,6 @@ function HomePage({ onOpenCalculator }) {
                     <p className="mt-2 text-base text-slate-600">{card.description}</p>
                   </Link>
                 </Motion.div>
-              )
-            })}
-          </Motion.div>
-        </div>
-      </Motion.section>
-
-      <Motion.section
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeUp}
-        className="bg-bg-light py-14"
-      >
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-6 shadow-sm sm:p-8">
-            <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.95fr]">
-              <article>
-                <p className="inline-flex items-center rounded-full border border-brand-green/30 bg-white px-4 py-2 text-sm font-semibold text-brand-green">
-                  About Us
-                </p>
-                <h2 className="mt-4 font-montserrat text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
-                  Your Trusted Partner For <span className="text-brand-green">Rooftop Solar</span> Solutions
-                </h2>
-                <p className="mt-4 max-w-2xl text-lg text-slate-600">
-                  {COMPANY_INFO.mission}
-                </p>
-
-                <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mt-6 grid gap-4 sm:grid-cols-2">
-                  {aboutHighlights.map((item) => {
-                    const Icon = item.icon
-
-                    return (
-                      <Motion.div
-                        key={item.title}
-                        variants={fadeUp}
-                        className="rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-green text-white">
-                            <Icon className="h-5 w-5" />
-                          </span>
-                          <p className="text-lg font-semibold text-brand-navy">{item.title}</p>
-                        </div>
-                      </Motion.div>
-                    )
-                  })}
-                </Motion.div>
-
-                <Button to="/about" className="mt-7">Know More</Button>
-              </article>
-
-              <div className="relative mx-auto w-full max-w-xl">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="relative h-72 overflow-hidden rounded-[42px] bg-gradient-to-b from-sky-300 via-emerald-200 to-sky-500 md:h-96" />
-                  <div className="mt-10 h-72 overflow-hidden rounded-[42px] bg-gradient-to-b from-slate-100 via-slate-200 to-slate-300 md:h-96" />
-                </div>
-
-                <div className="absolute left-1/2 top-1/2 flex h-36 w-36 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-8 border-bg-light bg-brand-green text-center text-white shadow-lg">
-                  <p className="font-montserrat text-3xl font-extrabold leading-none">
-                    10+
-                    <span className="mt-2 block text-base font-semibold">Years Of Experience</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Motion.section>
-
-      <Motion.section
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeUp}
-        className="relative overflow-hidden bg-white py-14"
-      >
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.15),transparent_65%)]" />
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Products & Services</h2>
-          <p className="mt-2 max-w-3xl text-base text-slate-600">
-            Green Nation Power provides the following solar solutions:
-          </p>
-
-          <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {productServices.map((item) => {
-              const Icon = item.icon
-
-              return (
-                <Motion.article
-                  key={item.title}
-                  variants={fadeUp}
-                  className="group relative h-72 overflow-hidden rounded-2xl border border-slate-200 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg"
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    onError={(event) => {
-                      event.currentTarget.onerror = null
-                      event.currentTarget.src = FALLBACK_SOLAR_IMAGE
-                    }}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/55 to-brand-navy/10 transition duration-300 group-hover:from-brand-navy/95 group-hover:via-brand-navy/70" />
-
-                  <div className="absolute left-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-brand-green">
-                    <Icon className="h-5 w-5" />
-                  </div>
-
-                  <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-                    <h3 className="font-montserrat text-lg font-semibold leading-snug">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed opacity-100 transition duration-300 md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-                      {item.description}
-                    </p>
-                  </div>
-                </Motion.article>
               )
             })}
           </Motion.div>
@@ -837,22 +882,39 @@ function HomePage({ onOpenCalculator }) {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeUp}
-        className="bg-white py-14"
+        className="relative overflow-hidden bg-white py-16"
       >
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(16,185,129,0.12),transparent_35%),radial-gradient(circle_at_90%_20%,rgba(10,25,47,0.08),transparent_35%)]" />
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="font-montserrat text-3xl font-bold text-brand-navy">Why Green Nation Power</h2>
-          <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-3">
-            {whyGnp.map((item) => {
+          <div className="max-w-3xl">
+            <p className="inline-flex items-center rounded-full border border-brand-green/30 bg-emerald-50 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-brand-green">
+              Why Choose Us
+            </p>
+            <h2 className="mt-4 font-montserrat text-3xl font-extrabold text-brand-navy sm:text-4xl">
+              Why Green Nation Power
+            </h2>
+            <p className="mt-3 text-base text-slate-600">
+              Built for long-term performance, faster service, and measurable savings from day one.
+            </p>
+          </div>
+
+          <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-5 md:grid-cols-3">
+            {whyGnp.map((item, index) => {
               const Icon = item.icon
 
               return (
                 <Motion.article
                   key={item.title}
                   variants={fadeUp}
-                  className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-md"
+                  className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg"
                 >
-                  <Icon className="h-6 w-6 text-brand-green" />
-                  <p className="mt-3 text-base font-semibold text-brand-navy">{item.title}</p>
+                  <div className="absolute right-5 top-5 text-sm font-semibold text-slate-300 transition group-hover:text-emerald-300">
+                    0{index + 1}
+                  </div>
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-brand-green transition group-hover:bg-brand-green group-hover:text-white">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <p className="mt-4 text-2xl font-semibold leading-snug text-brand-navy">{item.title}</p>
                 </Motion.article>
               )
             })}
@@ -890,6 +952,19 @@ function HomePage({ onOpenCalculator }) {
             </Button>
           </div>
         </div>
+      </section>
+
+      <section
+        className="sr-only"
+        aria-label="SEO keyword content"
+      >
+        <h2>Best Solar Rooftop, Commercial, and Institution Solutions</h2>
+        <p>
+          Green Nation Power offers best solar rooftop, best solar commercial, and best solar
+          institution services with related customized solutions for residential, commercial, and
+          institutional projects.
+        </p>
+        <p>{seoKeywordPhrases.join(', ')}</p>
       </section>
 
     </Motion.div>

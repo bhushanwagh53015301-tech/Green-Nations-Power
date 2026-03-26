@@ -28,7 +28,7 @@ function ContactPage() {
           </p>
         </section>
 
-        <section className="grid gap-8 lg:grid-cols-[1fr_1.1fr]">
+        <section className="grid items-start gap-8 lg:grid-cols-[1fr_1.1fr]">
           <div className="space-y-4">
             <article className="rounded-2xl border border-slate-200 bg-bg-light p-5 shadow-sm">
               <h2 className="font-montserrat text-xl font-bold text-brand-navy">Contact Information</h2>
@@ -51,7 +51,7 @@ function ContactPage() {
             </article>
 
             <article className="rounded-2xl border border-slate-200 bg-bg-light p-5 shadow-sm">
-              <h2 className="font-montserrat text-xl font-bold text-brand-navy">Office Addresses</h2>
+              <h2 className="font-montserrat text-xl font-bold text-brand-navy">Office Address</h2>
               <div className="mt-4 space-y-4">
                 <div className="rounded-xl border border-slate-200 bg-white p-4">
                   <p className="mb-2 flex items-center gap-2 font-semibold text-brand-navy">
@@ -63,22 +63,27 @@ function ContactPage() {
                     <span>{COMPANY_INFO.addresses.pune.address}</span>
                   </p>
                 </div>
+              </div>
+            </article>
 
-                <div className="rounded-xl border border-slate-200 bg-white p-4">
-                  <p className="mb-2 flex items-center gap-2 font-semibold text-brand-navy">
-                    <Building2 className="h-4 w-4 text-brand-green" />
-                    {COMPANY_INFO.addresses.pimpriChinchwad.title}
-                  </p>
-                  <p className="flex items-start gap-2 text-sm leading-relaxed text-slate-600">
-                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
-                    <span>{COMPANY_INFO.addresses.pimpriChinchwad.address}</span>
-                  </p>
-                </div>
+            <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+              <h2 className="border-b border-slate-200 px-5 py-4 font-montserrat text-xl font-bold text-brand-navy">
+                Uruli Kanchan Office Map
+              </h2>
+              <iframe
+                title="Green Nation Power Uruli Kanchan map"
+                src="https://maps.google.com/maps?q=Uruli%20Kanchan%2C%20Pune&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                className="h-72 w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <div className="border-t border-slate-200 bg-bg-light px-5 py-3 text-sm text-slate-600">
+                Map location: Uruli Kanchan, Pune
               </div>
             </article>
           </div>
 
-          <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <section className="self-start rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
             <h2 className="font-montserrat text-2xl font-bold text-brand-navy">Send Us A Message</h2>
             <p className="mt-2 text-slate-600">
               Fill out the form and our team will contact you shortly.
@@ -118,6 +123,23 @@ function ContactPage() {
                     className="h-12 w-full rounded-md border border-slate-200 px-3 text-base outline-none focus:border-brand-green"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="mb-1 block text-sm font-medium text-slate-700">Enquiry Type</label>
+                <select
+                  required
+                  defaultValue=""
+                  className="h-12 w-full rounded-md border border-slate-200 bg-white px-3 text-base outline-none focus:border-brand-green"
+                >
+                  <option value="" disabled>Select enquiry type</option>
+                  <option value="residential">Residential Solar</option>
+                  <option value="commercial">Commercial Solar</option>
+                  <option value="institutional">Institutional Solar</option>
+                  <option value="epc">EPC Solar</option>
+                  <option value="agriculture">Agriculture Solar</option>
+                  <option value="franchise">FRANCHISE (Apply Now)</option>
+                </select>
               </div>
 
               <div>

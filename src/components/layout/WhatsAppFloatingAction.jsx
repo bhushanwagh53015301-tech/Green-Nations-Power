@@ -12,7 +12,7 @@ function WhatsAppFloatingAction() {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="fixed bottom-[calc(9.75rem+env(safe-area-inset-bottom))] right-4 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition hover:scale-105 md:bottom-28 md:right-8"
+      className="fixed bottom-[calc(9.75rem+env(safe-area-inset-bottom))] right-4 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg transition hover:scale-105 md:bottom-28 md:right-8 md:inline-flex"
       aria-label="WhatsApp Green Nations power"
     >
       <svg viewBox="0 0 24 24" className="h-7 w-7 text-white" fill="currentColor" aria-hidden>

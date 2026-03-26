@@ -8,7 +8,7 @@ const DownloadProposalButton = lazy(() => import('./DownloadProposalButton'))
 function MetricCard({ label, value }) {
   return (
     <article className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-      <p className="text-sm font-medium text-slate-500">{label}</p>
+      <p className="text-sm font-medium text-slate-500">{label} *</p>
       <p className="mt-1 font-montserrat text-2xl font-bold text-brand-navy">{value}</p>
     </article>
   )
@@ -27,6 +27,9 @@ function ResultsDisplay({ activeTab, residential, commercial, rural, reportStatu
 
   return (
     <aside className="space-y-3">
+      <p className="text-sm font-medium text-slate-500">
+        * Calculator results are estimated values and may vary after a detailed site survey.
+      </p>
       {activeTab === 'residential' && (
         <>
           {!residential.canShowFinalResult && (
@@ -123,6 +126,7 @@ function ResultsDisplay({ activeTab, residential, commercial, rural, reportStatu
           Report generation failed. Please retry.
         </p>
       )}
+
     </aside>
   )
 }

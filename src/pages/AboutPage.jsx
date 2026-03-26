@@ -181,7 +181,7 @@ function AboutPage() {
               <span className="rounded-full border border-slate-200 px-3 py-2">ISO Practices</span>
               <span className="rounded-full border border-slate-200 px-3 py-2">MNRE</span>
               <span className="rounded-full border border-slate-200 px-3 py-2">Govt. Aligned</span>
-              <span className="rounded-full border border-slate-200 px-3 py-2">Adani Solar</span>
+              <span className="rounded-full border border-slate-200 px-3 py-2">Gautam Solar</span>
               <span className="rounded-full border border-slate-200 px-3 py-2">Waaree</span>
             </div>
           </div>

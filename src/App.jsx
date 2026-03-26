@@ -46,7 +46,7 @@ function App() {
             element={<LocationLandingPage onOpenCalculator={openCalculator} />}
           />
           <Route
-            path="/best-solar-provider-in-*"
+            path="/best-solar-provider-in-/*"
             element={<LegacyLocationRedirect />}
           />
           <Route path="/locations" element={<LocationsPage />} />
