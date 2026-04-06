@@ -14,6 +14,21 @@ const faqs = [
     answer:
       'Timelines vary by subdivision and document readiness. Most cases in Pune district move through approval, inspection, and commissioning in a few weeks when paperwork is complete.',
   },
+  {
+    question: 'How much roof area is needed for a home solar system?',
+    answer:
+      'A practical thumb rule is roughly 100 square feet per 1 kW, depending on panel efficiency and shadow-free usable area on your roof.',
+  },
+  {
+    question: 'What maintenance is required after installation?',
+    answer:
+      'Routine cleaning and periodic electrical checks are usually enough. Most households only need basic cleaning every few weeks plus annual preventive inspection.',
+  },
+  {
+    question: 'Can I increase system size later?',
+    answer:
+      'Yes, expansion is possible in many cases if roof space, inverter compatibility, and DISCOM limits allow it. We can plan an expandable design from day one.',
+  },
 ]
 
 function ResidentialPage() {

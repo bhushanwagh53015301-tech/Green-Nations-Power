@@ -1,5 +1,6 @@
 import { motion as Motion } from 'framer-motion'
 import { BadgeCheck, Building2, Factory, FileCheck2, IndianRupee, Zap } from 'lucide-react'
+import SolarCalculator from '../components/calculator/SolarCalculator'
 import ContactForm from '../components/forms/ContactForm'
 import Button from '../components/ui/Button'
 
@@ -73,7 +74,7 @@ function CommercialPage() {
                 long-term reliability and predictable savings.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Button className="bg-white text-brand-navy hover:bg-slate-100">Request Site Survey</Button>
+                <Button className="bg-white !text-brand-navy hover:bg-slate-100">Request Site Survey</Button>
                 <Button to="/projects" variant="outline" className="border-white bg-white/10 text-white hover:bg-white/20">
                   View Commercial Projects
                 </Button>
@@ -101,7 +102,7 @@ function CommercialPage() {
               Business Benefits
             </h2>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {businessBenefits.map((item) => {
               const Icon = item.icon
 
@@ -146,6 +147,19 @@ function CommercialPage() {
               ))}
             </ol>
           </article>
+        </section>
+
+        <section className="rounded-2xl border border-slate-200 bg-bg-light p-5 shadow-sm sm:p-6">
+          <h2 className="font-montserrat text-2xl font-bold text-brand-navy sm:text-3xl">
+            Commercial Savings Calculator
+          </h2>
+          <p className="mt-2 max-w-3xl text-slate-600">
+            Estimate CAPEX, annual savings, and payback for your sanctioned load with instant
+            commercial projections.
+          </p>
+          <div className="mt-5">
+            <SolarCalculator lockedTab="commercial" />
+          </div>
         </section>
 
         <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
