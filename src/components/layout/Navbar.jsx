@@ -26,8 +26,8 @@ function Navbar({ onOpenCalculator }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="ml-6 flex items-center gap-3" aria-label="Green Nations power">
+      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8">
+        <Link to="/" className="flex items-center gap-3 md:ml-6" aria-label="Green Nations power">
           <img src={gnpLogo} alt="Green Nations power logo" className="h-20 w-auto" />
         </Link>
 
