@@ -462,7 +462,7 @@ function HomePage({ onOpenCalculator }) {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.2),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(255,255,255,0.14),transparent_40%)]" />
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.2fr_1fr] lg:px-8">
           <div className="relative">
-            <p className="inline-flex items-center rounded-xl bg-brand-green px-4 py-2 text-lg font-semibold text-brand-navy">
+            <p className="inline-flex items-center rounded-xl bg-brand-green px-4 py-2 text-lg font-semibold text-white">
               Green Nation Power
             </p>
             <h2 className="mt-5 font-montserrat text-4xl font-extrabold leading-tight sm:text-5xl">
