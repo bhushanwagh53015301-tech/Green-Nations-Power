@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import Button from '../ui/Button'
-import gnpLogo from '../../../assets/gnp_logo.png'
+import gnpLogo from '../../../assets/Gnp-logo.svg'
 
 const navItems = [
   { label: 'Home', path: '/' },
@@ -17,7 +17,7 @@ const navItems = [
 
 function navLinkClass({ isActive }) {
   return `text-sm font-medium transition ${
-    isActive ? 'text-brand-green' : 'text-slate-200 hover:text-white'
+    isActive ? 'text-brand-green' : 'text-black hover:text-brand-green'
   }`
 }
 
@@ -25,7 +25,7 @@ function Navbar({ onOpenCalculator }) {
   const [isMobileOpen, setIsMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand-navy/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="ml-6 flex items-center gap-3" aria-label="Green Nations power">
           <img src={gnpLogo} alt="Green Nations power logo" className="h-20 w-auto" />
@@ -48,7 +48,7 @@ function Navbar({ onOpenCalculator }) {
         <button
           type="button"
           onClick={() => setIsMobileOpen((prev) => !prev)}
-          className="inline-flex h-12 w-12 items-center justify-center rounded-md border border-slate-600 text-white md:hidden"
+          className="inline-flex h-12 w-12 items-center justify-center rounded-md border border-slate-300 text-black md:hidden"
           aria-label="Toggle menu"
           aria-expanded={isMobileOpen}
         >
@@ -57,7 +57,7 @@ function Navbar({ onOpenCalculator }) {
       </div>
 
       {isMobileOpen && (
-        <div className="border-t border-white/10 bg-brand-navy px-4 pb-4 pt-3 md:hidden">
+        <div className="border-t border-slate-200 bg-white px-4 pb-4 pt-3 md:hidden">
           <nav className="grid gap-3">
             {navItems.map((item) => (
               <NavLink
@@ -67,8 +67,8 @@ function Navbar({ onOpenCalculator }) {
                 className={({ isActive }) =>
                   `rounded-md px-3 py-3 text-base font-medium ${
                     isActive
-                      ? 'bg-white/10 text-brand-green'
-                      : 'text-slate-100 hover:bg-white/10'
+                      ? 'text-brand-green'
+                      : 'text-black hover:text-brand-green'
                   }`
                 }
               >

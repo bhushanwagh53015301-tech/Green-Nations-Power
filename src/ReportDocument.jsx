@@ -1,5 +1,5 @@
 import { Document, Image, Page, StyleSheet, Text, View } from '@react-pdf/renderer'
-import gnpLogo from '../assets/gnp_logo.png'
+import gnpLogo from '../assets/Green-nations-power-logo.png'
 
 const currencyFormatter = new Intl.NumberFormat('en-IN', {
   style: 'currency',
