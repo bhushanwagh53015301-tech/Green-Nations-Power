@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import gnpLogo from '../../../assets/Gnp-logo.svg'
+import gnpLogo from '../../../assets/gnp-footer-logo.svg'
 import { COMPANY_INFO, CONTACT_EMAIL } from '../../constants'
 import { getLocationPagePath, SERVICE_LOCATIONS } from '../../data/serviceLocations'
 
