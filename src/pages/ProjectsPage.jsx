@@ -4,17 +4,22 @@ const projects = [
   {
     name: 'Uruli Kanchan Residential Cluster',
     type: 'Residential Rooftop Portfolio',
-    impact: 'Reduced monthly bills by 70-95% across early adopters.',
+    impact: 'Reduced monthly bills by 90-95% across early adopters.',
   },
   {
-    name: 'Ranjangaon MIDC Manufacturing Unit',
-    type: 'Industrial Captive Solar',
-    impact: 'Delivered strong year-one OPEX and tax optimization outcomes.',
+    name: 'Uruli Kanchana Group Housing Society',
+    type: 'Group Housing Society',
+    impact: 'Delivered high rooftop utilization with strong common-area energy savings.',
   },
   {
-    name: 'Baramati Land-Linked Solar Program',
-    type: 'EPC / Land Leasing',
-    impact: 'Enabled recurring land income under distributed generation model.',
+    name: 'Kharadi MIDC',
+    type: 'Commercial and Industrial',
+    impact: 'Reduced operating power costs through efficient commercial rooftop design.',
+  },
+  {
+    name: 'Pimpri Group Housing Society',
+    type: 'Residential Society Solar',
+    impact: 'Enabled long-term monthly bill reduction for society common loads.',
   },
 ]
 
@@ -34,7 +39,7 @@ function ProjectsPage() {
           <p className="text-base text-slate-600">A sample of GNP deployment profiles across Pune district.</p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {projects.map((project) => (
             <article
               key={project.name}

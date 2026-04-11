@@ -9,17 +9,17 @@ function CommercialForm({ sanctionedLoad, onLoadChange, includeTaxBenefit, onTax
 
       <div>
         <label className="mb-2 block text-base font-medium text-slate-700">
-          Sanctioned Load (kVA)
+          Sanctioned Load (kW)
         </label>
         <input
           type="number"
-          min="10"
+          min="5"
           max="2000"
           value={sanctionedLoad}
           onChange={(event) => {
             const next = Number(event.target.value)
             if (!Number.isNaN(next)) {
-              onLoadChange(clamp(next, 10, 2000))
+              onLoadChange(clamp(next, 5, 2000))
             }
           }}
           className="h-12 w-full rounded-md border border-slate-200 bg-transparent px-3 text-base"

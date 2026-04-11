@@ -1,13 +1,8 @@
 export const SERVICE_LOCATIONS = [
   {
-    name: 'Pune City',
+    name: 'Pune City (Haveli & Pune City)',
     slug: 'pune-city',
-    subtitle: 'Urban rooftop solar systems for homes, offices, and institutions.',
-  },
-  {
-    name: 'Haveli',
-    slug: 'haveli',
-    subtitle: 'Suburban residential and society solar with fast installation support.',
+    subtitle: 'Urban and suburban rooftop solar systems for homes, offices, and institutions.',
   },
   {
     name: 'Khed',
@@ -45,7 +40,7 @@ export const SERVICE_LOCATIONS = [
     subtitle: 'Large farm and industry-oriented solar ROI engineering.',
   },
   {
-    name: 'Purandhar',
+    name: 'Purandar',
     slug: 'purandhar',
     subtitle: 'Residential and village cluster solar with EPC support.',
   },
@@ -55,7 +50,7 @@ export const SERVICE_LOCATIONS = [
     subtitle: 'Rural solar pumps and residential rooftop demand.',
   },
   {
-    name: 'Velhe',
+    name: 'Velha',
     slug: 'velhe',
     subtitle: 'Remote-area solar electrification and rooftop systems.',
   },
@@ -70,7 +65,7 @@ export const SERVICE_LOCATIONS = [
     subtitle: 'Industrial corridor rooftops and commercial solar plants.',
   },
   {
-    name: 'Pimpri-Chinchwad City',
+    name: 'Pimpri-Chinchwad',
     slug: 'pimpri-chinchwad-city',
     subtitle: 'High-density urban and industrial solar deployments.',
   },

@@ -36,6 +36,7 @@ const CALCULATOR_TABS = [
   { id: 'commercial', label: 'Commercial' },
   { id: 'rural', label: 'EPC / Rural' },
 ]
+const HEAVY_DUTY_SAVINGS_MULTIPLIER = 1.03
 
 function SolarCalculator({ initialTab = 'residential', lockedTab = null, className = '' }) {
   const [activeTab, setActiveTab] = useState(initialTab)
@@ -67,7 +68,7 @@ function SolarCalculator({ initialTab = 'residential', lockedTab = null, classNa
 
   const residential = useMemo(() => {
     const recommendedKw = Math.max(monthlyBill / 800, 0)
-    let subsidy = recommendedKw * 30000 + 10000
+    let subsidy = recommendedKw <= 1 ? 30000 : recommendedKw <= 2 ? 60000 : 78000
     subsidy = Math.min(subsidy, RESIDENTIAL_SUBSIDY_CAP)
 
     const systemType = hasLoadShedding ? 'Hybrid + Battery' : 'On-Grid'
@@ -81,7 +82,7 @@ function SolarCalculator({ initialTab = 'residential', lockedTab = null, classNa
       ? recommendedKw * HEAVY_DUTY_STRUCTURE_COST_PER_KW
       : 0
 
-    const annualSavings = monthlyBill * 12
+    const annualSavings = monthlyBill * 12 * (needsHeavyDutyStructure ? HEAVY_DUTY_SAVINGS_MULTIPLIER : 1)
     const estimatedInvestment =
       recommendedKw * baseCostPerKw + hybridAddon + heavyDutyCost
     const netCapex = Math.max(estimatedInvestment - subsidy, 0)
@@ -128,7 +129,7 @@ function SolarCalculator({ initialTab = 'residential', lockedTab = null, classNa
   ])
 
   const commercial = useMemo(() => {
-    const load = clamp(Number(sanctionedLoad) || 10, 10, 2000)
+    const load = clamp(Number(sanctionedLoad) || 5, 5, 2000)
     const systemCost = load * 35000
     const annualGeneration = load * 4 * 365
     const annualBillSaving = annualGeneration * 12
@@ -164,7 +165,7 @@ function SolarCalculator({ initialTab = 'residential', lockedTab = null, classNa
   const rural = useMemo(() => {
     const landAcres = clamp(Number(acres) || 1, 1, 50)
     const yearlyRent = landAcres * 50000
-    const feasibility = distance === '> 5km' ? 'Low' : 'High'
+    const feasibility = distance === '5-10km' ? 'Low' : 'High'
     const siteDevelopmentCost = landAcres * RURAL_SITE_DEVELOPMENT_PER_ACRE
     const potentialCapacityKw = landAcres * RURAL_KW_PER_ACRE
     const landAreaSqft = landAcres * 43560
@@ -268,7 +269,7 @@ function SolarCalculator({ initialTab = 'residential', lockedTab = null, classNa
         summaryLeft: [
           {
             label: 'Sanctioned Load',
-            value: `${formatNumber(commercial.load)} kVA`,
+            value: `${formatNumber(commercial.load)} kW`,
           },
           {
             label: 'Recommended System Size',

@@ -18,13 +18,19 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Button from '../components/ui/Button'
+import founderImage from '../../assets/Vikas shivram jagtap.png'
+import solarImage1 from '../../assets/solar/IMG_0521.PNG'
+import solarImage2 from '../../assets/solar/IMG_0522.JPG.jpeg'
+import solarImage3 from '../../assets/solar/IMG_0523.JPG.jpeg'
+import solarImage4 from '../../assets/solar/IMG_0524.JPG.jpeg'
+import solarImage5 from '../../assets/solar/IMG_9821.JPG.jpeg'
 import {
   COMPANY_INFO,
   RESIDENTIAL_COST_PER_KW,
   RESIDENTIAL_ROOF_AREA_PER_KW,
   RESIDENTIAL_SUBSIDY_CAP,
 } from '../constants'
-import { getLocationPagePath, SERVICE_LOCATIONS } from '../data/serviceLocations'
+import { getLocationPagePath } from '../data/serviceLocations'
 import { formatCurrency, formatNumber } from '../solar/helpers'
 
 const categoryCards = [
@@ -51,33 +57,27 @@ const categoryCards = [
 const heroBanners = [
   {
     image:
-      'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80',
+      'https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1920&q=80',
     title: 'Rooftop Solar Systems',
-    subtitle: 'Efficient rooftop installations for homes, offices, and industries.',
-    collageTop:
-      'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80',
-    collageBottom:
-      'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80',
+    subtitle: 'Smart rooftop installations for homes, offices, and industries.',
+    collageTop: solarImage2,
+    collageBottom: solarImage3,
+  },
+  {
+    image:
+      'https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1920&q=80',
+    title: 'EPC Solar Solutions',
+    subtitle: 'End-to-end engineering, procurement, and construction for reliable solar projects.',
+    collageTop: solarImage5,
+    collageBottom: solarImage2,
   },
   {
     image:
       'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1920&q=80',
-    title: 'EPC Solar Solutions',
-    subtitle: 'Engineering, procurement, and construction support for complete solar projects.',
-    collageTop:
-      'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80',
-    collageBottom:
-      'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    image:
-      'https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1920&q=80',
     title: 'Agriculture Solar Solutions',
-    subtitle: 'Solar water pumps and reliable farm-focused energy systems.',
-    collageTop:
-      'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80',
-    collageBottom:
-      'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80',
+    subtitle: 'Reliable solar pumping and farm-focused energy systems.',
+    collageTop: solarImage4,
+    collageBottom: solarImage5,
   },
 ]
 
@@ -197,24 +197,24 @@ const scopeOfWork = [
     icon: Home,
   },
   {
-    title: 'Commercial Establishments',
-    description: 'Energy-saving solar for offices, shops, and business facilities.',
+    title: 'Petrol Pumps',
+    description: 'Reliable daytime generation solutions for fuel stations and forecourts.',
     icon: Building2,
   },
   {
-    title: 'Industrial Sectors',
-    description: 'High-load solar deployment for factories and production units.',
+    title: 'Gyms',
+    description: 'Lower electricity costs for HVAC, lighting, and high-hour equipment loads.',
     icon: Zap,
   },
   {
-    title: 'Institutions',
-    description: 'Reliable systems for schools, campuses, hospitals, and trusts.',
-    icon: BadgeCheck,
+    title: 'Warehouses',
+    description: 'Large-roof solar deployment for logistics, storage, and related business categories.',
+    icon: FileCheck2,
   },
   {
     title: 'Project Developers',
     description: 'End-to-end EPC collaboration from planning to commissioning.',
-    icon: FileCheck2,
+    icon: Target,
   },
   {
     title: 'Agricultural Sectors',
@@ -262,11 +262,42 @@ const seoKeywordPhrases = [
   'trusted solar EPC partner in Maharashtra',
 ]
 
+const safetyDos = [
+  'Wear safety rubber gloves and shoes while cleaning.',
+  'Clean solar panels twice a month (early morning or night preferred).',
+  'Check DC/AC cables, ACDB/DCDB, fuse, and voltage regularly.',
+  'Maintain generation records and periodic technical inspections.',
+]
+
+const safetyDonts = [
+  'Do not clean electrical panels with wet hands.',
+  'Do not operate the MSEB main switch during maintenance.',
+  'Do not use harsh chemicals for panel cleaning.',
+  'Do not climb or stand on solar panels.',
+]
+
 const professionalCounters = [
-  { label: 'Projects Delivered', value: 250, suffix: '+', icon: FileCheck2 },
-  { label: 'Installed Capacity', value: 12, suffix: ' MW+', icon: Building2 },
-  { label: 'Annual Client Savings', value: 8, prefix: 'Rs ', suffix: ' Cr+', icon: IndianRupee },
-  { label: 'Avg. Support Response', value: 24, suffix: ' Hrs', icon: BadgeCheck },
+  { label: 'Projects Delivered', value: 100, suffix: '+', icon: FileCheck2 },
+  { label: 'Installed Capacity', value: 500, suffix: ' kW+', icon: Building2 },
+  { label: 'Annual Client Savings', value: 15, prefix: 'Rs ', suffix: ' Lakh+', icon: IndianRupee },
+  { label: 'Avg. Support Response', value: 24, suffix: ' Hours', icon: BadgeCheck },
+]
+
+const cityLocationCards = [
+  { name: 'Pune City (Haveli & Pune City)', slug: 'pune-city' },
+  { name: 'Pimpri-Chinchwad', slug: 'pimpri-chinchwad-city' },
+  { name: 'Maval', slug: 'mawal' },
+  { name: 'Mulshi', slug: 'mulshi' },
+  { name: 'Baramati', slug: 'baramati' },
+  { name: 'Khed', slug: 'khed' },
+  { name: 'Shirur', slug: 'shirur' },
+  { name: 'Junnar', slug: 'junnar' },
+  { name: 'Indapur', slug: 'indapur' },
+  { name: 'Daund', slug: 'daund' },
+  { name: 'Bhor', slug: 'bhor' },
+  { name: 'Purandar', slug: 'purandhar' },
+  { name: 'Ambegaon', slug: 'ambegaon' },
+  { name: 'Velha', slug: 'velhe' },
 ]
 
 const fadeUp = {
@@ -281,6 +312,15 @@ const staggerIn = {
 
 const DEFAULT_HOME_BILL = '0'
 const DEFAULT_COMMERCIAL_BILL = '0'
+const founderSpotlight = {
+  name: 'Vikas shivram jagtap',
+  role: 'Founder, Green Nations Power',
+  image: founderImage,
+  bio:
+    'Green Nations Power was founded with one clear goal: make clean energy practical, reliable, and affordable for every household and business. With a strong focus on long-term value, our founder has built the company around quality workmanship, ethical service, and transparent project guidance from consultation to commissioning.',
+  note:
+    'Our founder leads with a service-first mindset, combining engineering discipline with transparent guidance so customers can adopt solar with confidence. His vision is not only to install solar systems, but to help families and businesses move toward energy independence, reduced electricity costs, and a cleaner future for the next generation.',
+}
 
 function AnimatedCounter({ value, prefix = '', suffix = '' }) {
   const [displayValue, setDisplayValue] = useState(0)
@@ -304,7 +344,7 @@ function AnimatedCounter({ value, prefix = '', suffix = '' }) {
   }, [value])
 
   return (
-    <p className="font-montserrat text-4xl font-extrabold text-brand-navy sm:text-5xl">
+    <p className="font-montserrat text-3xl font-extrabold text-brand-navy sm:text-4xl">
       {prefix}
       {formatNumber(displayValue)}
       {suffix}
@@ -320,7 +360,7 @@ function HomePage({ onOpenCalculator }) {
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setActiveBannerIndex((current) => (current + 1) % heroBanners.length)
-    }, 4000)
+    }, 5500)
 
     return () => window.clearInterval(intervalId)
   }, [])
@@ -344,7 +384,7 @@ function HomePage({ onOpenCalculator }) {
       systemSizeKw <= 1 ? 30000 : systemSizeKw <= 2 ? 60000 : 78000,
       RESIDENTIAL_SUBSIDY_CAP,
     )
-    : 0
+    : systemSizeKw * 18000
 
   const calculatorHighlights = [
     { label: 'System Size *', value: `${formatNumber(systemSizeKw)} kW`, icon: Calculator },
@@ -358,7 +398,7 @@ function HomePage({ onOpenCalculator }) {
   const subsidySnapshot = [
     { label: 'System Size', value: 'Up to 1 kW', note: formatCurrency(30000) },
     { label: 'System Size', value: 'Up to 2 kW', note: formatCurrency(60000) },
-    { label: 'System Size', value: '3 to 5 kW', note: formatCurrency(78000) },
+    { label: 'System Size', value: '3 to 7 kW', note: formatCurrency(78000) },
     { label: 'Commercial / Societies', value: 'Per kW', note: `${formatCurrency(18000)} / kW` },
   ]
 
@@ -375,7 +415,7 @@ function HomePage({ onOpenCalculator }) {
         {heroBanners.map((banner, index) => (
           <div
             key={banner.title}
-            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ${
+            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
               index === activeBannerIndex ? 'opacity-100' : 'opacity-0'
             }`}
             style={{ backgroundImage: `url(${banner.image})` }}
@@ -463,7 +503,7 @@ function HomePage({ onOpenCalculator }) {
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.2fr_1fr] lg:px-8">
           <div className="relative">
             <p className="inline-flex items-center rounded-xl bg-brand-green px-4 py-2 text-lg font-semibold text-white">
-              Green Nation Power
+              Green Nations Power
             </p>
             <h2 className="mt-5 font-montserrat text-4xl font-extrabold leading-tight sm:text-5xl">
               Solar <span className="text-brand-green">{calculatorTypeLabel}</span> Calculator
@@ -592,13 +632,93 @@ function HomePage({ onOpenCalculator }) {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeUp}
+        className="bg-white py-14"
+      >
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-slate-200 bg-gradient-to-r from-white to-slate-50 p-6 shadow-sm sm:p-8">
+            <h2 className="text-center font-montserrat text-3xl font-bold text-brand-navy sm:text-4xl">
+              Solar Safety Do&apos;s &amp; Don&apos;ts
+            </h2>
+            <p className="mx-auto mt-3 max-w-3xl text-center text-base text-slate-600">
+              Quick safety guidelines for safe operation and better system life.
+            </p>
+
+            <div className="mt-8 grid gap-4 lg:grid-cols-2">
+              <article className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 className="font-montserrat text-xl font-bold text-emerald-700">Do&apos;s</h3>
+                <ul className="mt-3 space-y-2 text-sm text-slate-700">
+                  {safetyDos.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-2 inline-block h-2 w-2 rounded-full bg-brand-green" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              <article className="rounded-2xl border border-red-200 bg-red-50 p-5">
+                <h3 className="font-montserrat text-xl font-bold text-red-700">Don&apos;ts</h3>
+                <ul className="mt-3 space-y-2 text-sm text-red-700">
+                  {safetyDonts.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-2 inline-block h-2 w-2 rounded-full bg-red-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </Motion.section>
+
+      <Motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeUp}
+        className="bg-[#f3f5f4] py-14"
+      >
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="space-y-6 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+            <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+              <article>
+                <p className="inline-flex rounded-md bg-brand-green px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-navy">
+                  Founder Spotlight
+                </p>
+                <h2 className="mt-4 font-montserrat text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
+                  {founderSpotlight.name}
+                </h2>
+                <p className="mt-1 text-base font-semibold text-brand-green">{founderSpotlight.role}</p>
+                <p className="mt-4 text-slate-700">{founderSpotlight.bio}</p>
+                <p className="mt-3 text-slate-600">{founderSpotlight.note}</p>
+                <Button to="/about" className="mt-6">Know More</Button>
+              </article>
+              <div className="mx-auto h-[300px] w-full max-w-[520px] overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100 sm:h-[350px] lg:h-[380px]">
+                <img
+                  src={founderSpotlight.image}
+                  alt={`${founderSpotlight.name}, ${founderSpotlight.role}`}
+                  className="h-full w-full object-contain object-top"
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </Motion.section>
+
+      <Motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeUp}
         className="relative overflow-hidden bg-white py-14"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.15),transparent_65%)]" />
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-center font-montserrat text-3xl font-bold text-brand-navy">Products & Services</h2>
           <p className="mx-auto mt-2 max-w-3xl text-center text-base text-slate-600">
-            Green Nation Power provides the following solar solutions:
+            Green Nations Power provides the following solar solutions:
           </p>
 
           <Motion.div variants={staggerIn} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -788,7 +908,7 @@ function HomePage({ onOpenCalculator }) {
               Complete Solar Energy Solutions for Homes, Businesses, and EPC Projects.
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600">
-              Welcome to Green Nation Power, your trusted partner in sustainable energy solutions
+              Welcome to Green Nations Power, your trusted partner in sustainable energy solutions
               based in Uruli Kanchan, Pune. As pioneers in the solar energy industry, we help
               communities and businesses harness the power of the sun.
             </p>
@@ -898,7 +1018,7 @@ function HomePage({ onOpenCalculator }) {
               Why Choose Us
             </p>
             <h2 className="mt-4 font-montserrat text-3xl font-extrabold text-brand-navy sm:text-4xl">
-              Why Green Nation Power
+              Why Green Nations Power
             </h2>
             <p className="mt-3 text-base text-slate-600">
               Built for long-term performance, faster service, and measurable savings from day one.
@@ -931,23 +1051,23 @@ function HomePage({ onOpenCalculator }) {
 
       <section className="bg-bg-light py-14 text-brand-navy">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center font-montserrat text-3xl font-bold">Best Solar Provider Pages by City</h2>
+          <h2 className="text-center font-montserrat text-3xl font-bold">Best Solar installation Provider Pages by City</h2>
           <p className="mx-auto mt-2 max-w-3xl text-center text-slate-600">
             Browse our city-focused pages to explore local service availability and project execution.
           </p>
           <p className="mx-auto mt-3 max-w-3xl text-center text-slate-600">
-            Join Green Nation Power in building a sustainable future. Together, we can harness the
+            Join Green Nations Power in building a sustainable future. Together, we can harness the
             power of the sun and make a lasting impact on the planet.
           </p>
 
           <div className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-            {SERVICE_LOCATIONS.map((city) => (
+            {cityLocationCards.map((city) => (
               <Link
-                key={city.slug}
+                key={`${city.slug}-${city.name}`}
                 to={getLocationPagePath(city.slug)}
                 className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-base font-semibold text-brand-navy transition hover:border-brand-green hover:text-brand-green"
               >
-                Best Solar Provider in {city.name}
+                Best Solar installation Provider in {city.name}
               </Link>
             ))}
           </div>
@@ -967,7 +1087,7 @@ function HomePage({ onOpenCalculator }) {
       >
         <h2>Best Solar Rooftop, Commercial, and Institution Solutions</h2>
         <p>
-          Green Nation Power offers best solar rooftop, best solar commercial, and best solar
+          Green Nations Power offers best solar rooftop, best solar commercial, and best solar
           institution services with related customized solutions for residential, commercial, and
           institutional projects.
         </p>

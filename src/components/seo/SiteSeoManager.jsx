@@ -34,9 +34,9 @@ const BASE_KEYWORDS = [
 
 const ROUTE_SEO = {
   '/': {
-    title: 'Best Solar Rooftop, Commercial & Institution Solutions | Green Nation Power',
+    title: 'Best Solar Rooftop, Commercial & Institution Solutions | Green Nations Power',
     description:
-      'Green Nation Power provides best solar rooftop, commercial, and institution solar solutions with end-to-end design, installation, and support.',
+      'Green Nations Power provides best solar rooftop, commercial, and institution solar solutions with end-to-end design, installation, and support.',
     keywords: [
       'best solar rooftop solutions',
       'best solar commercial solutions',
@@ -46,9 +46,9 @@ const ROUTE_SEO = {
     ],
   },
   '/about': {
-    title: 'About Green Nation Power | Best Solar Rooftop Experts',
+    title: 'About Green Nations Power | Best Solar Rooftop Experts',
     description:
-      'Learn about Green Nation Power, a trusted team for rooftop, commercial, and institutional solar projects in Pune and nearby regions.',
+      'Learn about Green Nations Power, a trusted team for rooftop, commercial, and institutional solar projects in Pune and nearby regions.',
     keywords: [
       'best solar rooftop experts',
       'trusted solar company',
@@ -56,7 +56,7 @@ const ROUTE_SEO = {
     ],
   },
   '/residential': {
-    title: 'Residential Rooftop Solar Solutions | Green Nation Power',
+    title: 'Residential Rooftop Solar Solutions | Green Nations Power',
     description:
       'Get residential rooftop solar systems designed for higher savings, subsidy support, and reliable long-term performance.',
     keywords: [
@@ -66,7 +66,7 @@ const ROUTE_SEO = {
     ],
   },
   '/commercial': {
-    title: 'Commercial & Industrial Solar Solutions | Green Nation Power',
+    title: 'Commercial & Industrial Solar Solutions | Green Nations Power',
     description:
       'Scale business savings with commercial and industrial solar systems, custom engineering, and professional installation support.',
     keywords: [
@@ -76,7 +76,7 @@ const ROUTE_SEO = {
     ],
   },
   '/epc': {
-    title: 'Solar EPC Services | Green Nation Power',
+    title: 'Solar EPC Services | Green Nations Power',
     description:
       'Complete solar EPC services from engineering to commissioning for residential, commercial, and institutional projects.',
     keywords: [
@@ -88,7 +88,7 @@ const ROUTE_SEO = {
   '/locations': {
     title: 'Service Locations | Best Solar Provider by City',
     description:
-      'Explore Green Nation Power service areas and find city-specific support for rooftop, commercial, and institution solar projects.',
+      'Explore Green Nations Power service areas and find city-specific support for rooftop, commercial, and institution solar projects.',
     keywords: [
       'best solar provider by city',
       'solar rooftop near me',
@@ -96,9 +96,9 @@ const ROUTE_SEO = {
     ],
   },
   '/projects': {
-    title: 'Solar Projects Portfolio | Green Nation Power',
+    title: 'Solar Projects Portfolio | Green Nations Power',
     description:
-      'View completed rooftop, commercial, and institutional solar projects delivered by Green Nation Power.',
+      'View completed rooftop, commercial, and institutional solar projects delivered by Green Nations Power.',
     keywords: [
       'solar projects portfolio',
       'commercial solar project company',
@@ -106,9 +106,9 @@ const ROUTE_SEO = {
     ],
   },
   '/contact': {
-    title: 'Contact Green Nation Power | Solar Rooftop Consultation',
+    title: 'Contact Green Nations Power | Solar Rooftop Consultation',
     description:
-      'Contact Green Nation Power for rooftop, commercial, and institutional solar consultation, site survey, and project planning.',
+      'Contact Green Nations Power for rooftop, commercial, and institutional solar consultation, site survey, and project planning.',
     keywords: [
       'solar consultation contact',
       'book solar site survey',
@@ -145,8 +145,8 @@ function getSeoDetails(pathname) {
     const cityName = formatCityName(citySlug)
 
     return {
-      title: `Best Solar Provider in ${cityName} | Green Nation Power`,
-      description: `Find best solar rooftop, commercial, and institution solar services in ${cityName} with Green Nation Power.`,
+      title: `Best Solar Provider in ${cityName} | Green Nations Power`,
+      description: `Find best solar rooftop, commercial, and institution solar services in ${cityName} with Green Nations Power.`,
       keywords: [
         `best solar provider in ${cityName}`,
         `best solar rooftop in ${cityName}`,

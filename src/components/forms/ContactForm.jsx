@@ -3,6 +3,9 @@ import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+
 const baseSchema = z.object({
   fullName: z.string().trim().min(2, 'Full name is required.'),
   whatsapp: z.string().regex(/^\d{10}$/, 'Enter a valid 10-digit WhatsApp number.'),
@@ -11,7 +14,7 @@ const baseSchema = z.object({
 const industrialSchema = baseSchema.extend({
   sanctionedLoad: z.coerce
     .number({ invalid_type_error: 'Enter sanctioned load.' })
-    .min(10, 'Minimum sanctioned load is 10 kVA.'),
+    .min(5, 'Minimum sanctioned load is 5 kW.'),
   companyName: z.string().trim().min(2, 'Company name is required.'),
 })
 
@@ -23,6 +26,7 @@ const epcSchema = baseSchema.extend({
 
 function ContactForm({ variant }) {
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const schema = useMemo(() => {
     if (variant === 'industrial') {
@@ -57,16 +61,62 @@ function ContactForm({ variant }) {
           },
   })
 
-  const onSubmit = async () => {
+  const onSubmit = async (values) => {
     setSubmitted(false)
-    await new Promise((resolve) => setTimeout(resolve, 600))
+    setSubmitError('')
+
+    if (!WEB3FORMS_ACCESS_KEY) {
+      throw new Error('Missing Web3Forms key')
+    }
+
+    const formData = new FormData()
+    formData.append('access_key', WEB3FORMS_ACCESS_KEY)
+    formData.append('subject', `New ${variant === 'industrial' ? 'Industrial' : 'EPC'} Lead - Green Nations Power`)
+    formData.append('from_name', 'Green Nations Power Website')
+    formData.append('replyto', 'greennationpoweruk@gmail.com')
+    formData.append('Form Type', variant === 'industrial' ? 'Industrial Lead Form' : 'EPC Land Lead Form')
+    formData.append('Full Name', values.fullName)
+    formData.append('WhatsApp', values.whatsapp)
+
+    if (variant === 'industrial') {
+      formData.append('Sanctioned Load (kW)', String(values.sanctionedLoad))
+      formData.append('Company Name', values.companyName)
+    } else {
+      formData.append('Acres of Land', String(values.acres))
+      formData.append('Pin Code', values.pinCode)
+      formData.append('7/12 Extract File Name', values.extractFileName)
+    }
+
+    const response = await fetch(WEB3FORMS_ENDPOINT, {
+      method: 'POST',
+      body: formData,
+    })
+
+    const result = await response.json()
+    if (!response.ok || !result.success) {
+      throw new Error('Submission failed')
+    }
+
     setSubmitted(true)
     reset()
   }
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(
+        async (values) => {
+          try {
+            await onSubmit(values)
+          } catch (_error) {
+            setSubmitted(false)
+            if (!WEB3FORMS_ACCESS_KEY) {
+              setSubmitError('Form is not configured yet. Add VITE_WEB3FORMS_ACCESS_KEY to enable submissions.')
+              return
+            }
+            setSubmitError('Submission failed. Please try again or contact us on WhatsApp.')
+          }
+        },
+      )}
       className="space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
     >
       <div className="grid gap-4 md:grid-cols-2">
@@ -107,11 +157,11 @@ function ContactForm({ variant }) {
         <>
           <div>
             <label className="mb-1 block text-base font-medium text-slate-700">
-              Sanctioned Load (kVA)
+              Sanctioned Load (kW)
             </label>
             <input
               type="number"
-              min="10"
+              min="5"
               className="h-12 w-full rounded-md border border-slate-200 bg-transparent px-3 text-base"
               {...register('sanctionedLoad')}
             />
@@ -206,6 +256,12 @@ function ContactForm({ variant }) {
       {submitted && (
         <p className="rounded-md border border-brand-green/30 bg-brand-green/10 px-3 py-2 text-sm font-semibold text-brand-navy">
           Details received. Our Uruli Kanchan team will contact you shortly.
+        </p>
+      )}
+
+      {submitError && (
+        <p className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">
+          {submitError}
         </p>
       )}
     </form>

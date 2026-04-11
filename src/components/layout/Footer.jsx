@@ -10,7 +10,7 @@ function Footer() {
     <footer className="bg-brand-navy pb-28 pt-12 text-slate-200 md:pb-12">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-3 lg:px-8">
         <div className="space-y-4">
-          <img src={gnpLogo} alt="Green Nation Power logo" className="h-20 w-auto" />
+          <img src={gnpLogo} alt="Green Nations Power logo" className="h-20 w-auto" />
           <p className="text-sm font-semibold text-white">{COMPANY_INFO.tagline}</p>
 
           <div className="space-y-1">
@@ -95,7 +95,6 @@ function Footer() {
         <div>
           <h3 className="font-montserrat text-lg font-semibold text-white">Trust Badges</h3>
           <ul className="mt-4 space-y-3 text-sm text-slate-300">
-            <li>ISO-Compliant Engineering Processes</li>
             <li>MSME Registered Vendor Network</li>
             <li>Mahavitaran Paperwork Specialist Team</li>
             <li>MNRE-Aligned Solar Deployment Standards</li>
@@ -114,7 +113,7 @@ function Footer() {
         </div>
       </div>
       <div className="mx-auto mt-10 w-full max-w-7xl border-t border-slate-700 px-4 pt-6 text-center text-sm text-slate-400 sm:px-6 lg:px-8">
-        Copyright {currentYear} Green Nation Power. All rights reserved. Developed by Webakoof.
+        Copyright {currentYear} Green Nations Power. All rights reserved. Developed by Webakoof.
       </div>
     </footer>
   )
