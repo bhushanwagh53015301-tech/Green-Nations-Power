@@ -49,7 +49,7 @@ function ContactForm({ variant }) {
         ? {
             fullName: '',
             whatsapp: '',
-            sanctionedLoad: 100,
+            sanctionedLoad: 5,
             companyName: '',
           }
         : {

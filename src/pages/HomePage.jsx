@@ -264,28 +264,40 @@ const seoKeywordPhrases = [
 
 const safetyDos = [
   'Wear safety rubber gloves and shoes while cleaning.',
-  'Clean solar panels twice a month (early morning or night preferred).',
-  'Check DC/AC cables, ACDB/DCDB, fuse, and voltage regularly.',
-  'Maintain generation records and periodic technical inspections.',
+  'Place "Wet Floor" warning signs after mopping.',
+  'Report damaged wires or equipment immediately.',
+  'Clean solar panels twice a month (preferably early morning or night).',
+  'Check all technical components such as DC/AC cables, ACDB/DCDB, fuse, and voltage regularly.',
+  'Maintain and monitor the solar generation report.',
+  'Inspect nut bolts, rust, clamps, cracks, and mounting structure foundation regularly.',
+  'Check earthing system and lightning arrester condition.',
+  'Conduct a technical inspection every 3 months.',
+  'Conduct a complete system audit once every year (mandatory).',
 ]
 
 const safetyDonts = [
   'Do not clean electrical panels with wet hands.',
-  'Do not operate the MSEB main switch during maintenance.',
+  'Do not leave tools scattered on the floor or solar panel system area.',
+  'Do not switch ON/OFF or operate the MSEB main switch during cleaning or maintenance.',
+  'Do not work without safety gloves, safety shoes, and safety belt while working on the rooftop.',
+  'Do not give any kind of load on the solar panels.',
+  'Do not operate the system without a CO₂ fire extinguisher available nearby.',
+  'Do not allow untrained technicians to inspect or repair the system.',
   'Do not use harsh chemicals for panel cleaning.',
   'Do not climb or stand on solar panels.',
+  'Do not allow children near solar panels or inverter equipment.',
 ]
 
 const professionalCounters = [
   { label: 'Projects Delivered', value: 100, suffix: '+', icon: FileCheck2 },
-  { label: 'Installed Capacity', value: 500, suffix: ' kW+', icon: Building2 },
-  { label: 'Annual Client Savings', value: 15, prefix: 'Rs ', suffix: ' Lakh+', icon: IndianRupee },
-  { label: 'Avg. Support Response', value: 24, suffix: ' Hours', icon: BadgeCheck },
+  { label: 'Installed Capacity', value: 500, suffix: ' kw+', icon: Building2 },
+  { label: 'Annual Savings', value: 15, prefix: 'Rs ', suffix: ' lakh+', icon: IndianRupee },
+  { label: 'Avg. Support Response', value: 24, suffix: ' hours', icon: BadgeCheck },
 ]
 
 const cityLocationCards = [
   { name: 'Pune City (Haveli & Pune City)', slug: 'pune-city' },
-  { name: 'Pimpri-Chinchwad', slug: 'pimpri-chinchwad-city' },
+  { name: 'Pimpri chinchwad office - Gate*', slug: 'pimpri-chinchwad-city' },
   { name: 'Maval', slug: 'mawal' },
   { name: 'Mulshi', slug: 'mulshi' },
   { name: 'Baramati', slug: 'baramati' },
@@ -312,15 +324,19 @@ const staggerIn = {
 
 const DEFAULT_HOME_BILL = '0'
 const DEFAULT_COMMERCIAL_BILL = '0'
-const founderSpotlight = {
-  name: 'Vikas shivram jagtap',
-  role: 'Founder, Green Nations Power',
-  image: founderImage,
-  bio:
-    'Green Nations Power was founded with one clear goal: make clean energy practical, reliable, and affordable for every household and business. With a strong focus on long-term value, our founder has built the company around quality workmanship, ethical service, and transparent project guidance from consultation to commissioning.',
-  note:
-    'Our founder leads with a service-first mindset, combining engineering discipline with transparent guidance so customers can adopt solar with confidence. His vision is not only to install solar systems, but to help families and businesses move toward energy independence, reduced electricity costs, and a cleaner future for the next generation.',
-}
+const leadershipMembers = [
+  { name: 'Vikas Shivram Jagtap', role: 'Founder, Green Nations Power' },
+  { name: 'Siddharth Jagtap', role: 'Director, Green Nations Power' },
+]
+
+const leadershipOverview = [
+  'Green Nations Power is led by a hands-on leadership team focused on practical, high-performance solar solutions.',
+  'Vikas Shivram Jagtap and Siddharth Jagtap guide every project from planning to commissioning with transparent support.',
+  'Their approach combines quality engineering, site-specific design, and long-term service accountability.',
+  'Together, they are helping homes, societies, and businesses move toward reliable clean energy and lower bills.',
+]
+
+const leadershipGroupPhotos = [solarImage2, solarImage3, solarImage4]
 
 function AnimatedCounter({ value, prefix = '', suffix = '' }) {
   const [displayValue, setDisplayValue] = useState(0)
@@ -399,7 +415,7 @@ function HomePage({ onOpenCalculator }) {
     { label: 'System Size', value: 'Up to 1 kW', note: formatCurrency(30000) },
     { label: 'System Size', value: 'Up to 2 kW', note: formatCurrency(60000) },
     { label: 'System Size', value: '3 to 7 kW', note: formatCurrency(78000) },
-    { label: 'Commercial / Societies', value: 'Per kW', note: `${formatCurrency(18000)} / kW` },
+    { label: 'Societies', value: 'Per kW', note: `${formatCurrency(18000)} / kW` },
   ]
 
   const activeCollageLayout = collageLayouts[activeBannerIndex % collageLayouts.length]
@@ -491,6 +507,66 @@ function HomePage({ onOpenCalculator }) {
           </div>
         </div>
       </section>
+
+      <Motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={fadeUp}
+        className="bg-[#f3f5f4] py-14"
+      >
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="space-y-6 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+            <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+              <article className="order-2 lg:order-1">
+                <p className="inline-flex rounded-md bg-brand-green px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-navy">
+                  About GNP Leadership
+                </p>
+                <h2 className="mt-4 font-montserrat text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
+                  Vikas and Siddharth Jagtap
+                </h2>
+                <div className="mt-3 space-y-1 text-sm font-semibold text-brand-green sm:text-base">
+                  {leadershipMembers.map((member) => (
+                    <p key={member.name}>
+                      {member.name} - {member.role}
+                    </p>
+                  ))}
+                </div>
+                <div className="mt-4 space-y-3 text-slate-700">
+                  {leadershipOverview.map((line) => (
+                    <p key={line}>{line}</p>
+                  ))}
+                </div>
+              </article>
+
+              <div className="order-1 mx-auto h-[300px] w-full max-w-[520px] overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100 sm:h-[350px] lg:order-2 lg:h-[380px]">
+                <img
+                  src={founderImage}
+                  alt="Vikas and Siddharth Jagtap leadership profile"
+                  className="h-full w-full object-contain object-top"
+                />
+              </div>
+            </div>
+
+            <div>
+              <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-600">
+                Group Photos
+              </p>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {leadershipGroupPhotos.map((photo, index) => (
+                  <div key={`${photo}-${index}`} className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
+                    <img
+                      src={photo}
+                      alt={`Green Nations Power team project photo ${index + 1}`}
+                      className="h-44 w-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </Motion.section>
 
       <Motion.section
         initial="hidden"
@@ -668,41 +744,6 @@ function HomePage({ onOpenCalculator }) {
                 </ul>
               </article>
             </div>
-          </div>
-        </div>
-      </Motion.section>
-
-      <Motion.section
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={fadeUp}
-        className="bg-[#f3f5f4] py-14"
-      >
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="space-y-6 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
-            <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-              <article>
-                <p className="inline-flex rounded-md bg-brand-green px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-navy">
-                  Founder Spotlight
-                </p>
-                <h2 className="mt-4 font-montserrat text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
-                  {founderSpotlight.name}
-                </h2>
-                <p className="mt-1 text-base font-semibold text-brand-green">{founderSpotlight.role}</p>
-                <p className="mt-4 text-slate-700">{founderSpotlight.bio}</p>
-                <p className="mt-3 text-slate-600">{founderSpotlight.note}</p>
-                <Button to="/about" className="mt-6">Know More</Button>
-              </article>
-              <div className="mx-auto h-[300px] w-full max-w-[520px] overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100 sm:h-[350px] lg:h-[380px]">
-                <img
-                  src={founderSpotlight.image}
-                  alt={`${founderSpotlight.name}, ${founderSpotlight.role}`}
-                  className="h-full w-full object-contain object-top"
-                />
-              </div>
-            </div>
-
           </div>
         </div>
       </Motion.section>
@@ -1051,7 +1092,7 @@ function HomePage({ onOpenCalculator }) {
 
       <section className="bg-bg-light py-14 text-brand-navy">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center font-montserrat text-3xl font-bold">Best Solar installation Provider Pages by City</h2>
+          <h2 className="text-center font-montserrat text-3xl font-bold">Best Solar Installation Pages by City</h2>
           <p className="mx-auto mt-2 max-w-3xl text-center text-slate-600">
             Browse our city-focused pages to explore local service availability and project execution.
           </p>
@@ -1067,7 +1108,7 @@ function HomePage({ onOpenCalculator }) {
                 to={getLocationPagePath(city.slug)}
                 className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-base font-semibold text-brand-navy transition hover:border-brand-green hover:text-brand-green"
               >
-                Best Solar installation Provider in {city.name}
+                Best Solar Installation in {city.name}
               </Link>
             ))}
           </div>

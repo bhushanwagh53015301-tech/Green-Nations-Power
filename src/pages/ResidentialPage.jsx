@@ -44,7 +44,7 @@ function ResidentialPage() {
       <div className="mx-auto w-full max-w-7xl space-y-10 px-4 sm:px-6 lg:px-8">
         <section className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
           <h1 className="font-montserrat text-3xl font-extrabold text-brand-navy sm:text-4xl">
-            Claim up to Rs 1.3 Lakh Subsidy under PM Surya Ghar.
+            Claim up to Rs 78,000 Subsidy under PM Surya Ghar.
           </h1>
           <p className="mt-3 max-w-2xl text-lg text-slate-600">
             Enter your monthly bill and get an instant savings estimate tailored for Pune district homes.

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion as Motion } from 'framer-motion'
-import { BadgeCheck, ChevronLeft, ChevronRight, Clock3, FileText, IndianRupee, Rocket, ShieldCheck, Target, Users, Wrench } from 'lucide-react'
+import { BadgeCheck, Clock3, FileText, IndianRupee, Rocket, ShieldCheck, Target, Users, Wrench } from 'lucide-react'
 import Button from '../components/ui/Button'
 import founderImage from '../../assets/Vikas shivram jagtap.png'
 
@@ -63,7 +63,7 @@ const whyChoosePoints = [
 ]
 
 const founderProfile = {
-  name: 'Vikas shivram jagtap',
+  name: 'Vikas Shivram Jagtap',
   role: 'Founder, Green Nations Power',
   image: founderImage,
   bio:
@@ -142,14 +142,6 @@ function AboutPage() {
     return () => window.clearInterval(autoplayId)
   }, [])
 
-  const goToPreviousMember = () => {
-    setActiveTeamIndex((previous) => (previous - 1 + teamMembers.length) % teamMembers.length)
-  }
-
-  const goToNextMember = () => {
-    setActiveTeamIndex((previous) => (previous + 1) % teamMembers.length)
-  }
-
   return (
     <Motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -160,7 +152,7 @@ function AboutPage() {
       <section className="bg-[#f3f5f4] py-16">
         <div className="mx-auto w-full max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-8 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-8 lg:grid-cols-[1.05fr_0.95fr]">
-            <article>
+            <article className="order-2 lg:order-1">
               <p className="inline-flex rounded-md bg-brand-green px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-navy">
                 Founder Spotlight
               </p>
@@ -172,7 +164,7 @@ function AboutPage() {
               <p className="mt-3 text-slate-600">{founderProfile.note}</p>
               <Button to="/contact" className="mt-6">Connect With Our Team</Button>
             </article>
-            <div className="mx-auto h-[300px] w-full max-w-[520px] overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100 sm:h-[350px] lg:h-[380px]">
+            <div className="order-1 mx-auto h-[300px] w-full max-w-[520px] overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100 sm:h-[350px] lg:order-2 lg:h-[380px]">
               <img
                 src={founderProfile.image}
                 alt={`${founderProfile.name}, ${founderProfile.role}`}
@@ -396,24 +388,7 @@ function AboutPage() {
                   Meet The People Behind Every Project
                 </h2>
               </div>
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={goToPreviousMember}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-brand-navy transition hover:bg-emerald-50"
-                  aria-label="Previous team member"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  type="button"
-                  onClick={goToNextMember}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 text-brand-navy transition hover:bg-emerald-50"
-                  aria-label="Next team member"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-              </div>
+              <div />
             </div>
 
             <Motion.article

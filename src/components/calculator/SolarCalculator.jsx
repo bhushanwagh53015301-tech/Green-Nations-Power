@@ -42,7 +42,7 @@ function SolarCalculator({ initialTab = 'residential', lockedTab = null, classNa
   const [activeTab, setActiveTab] = useState(initialTab)
 
   const [monthlyBill, setMonthlyBill] = useState(6000)
-  const [sanctionedLoad, setSanctionedLoad] = useState(200)
+  const [sanctionedLoad, setSanctionedLoad] = useState(5)
   const [includeTaxBenefit, setIncludeTaxBenefit] = useState(true)
   const [acres, setAcres] = useState(8)
   const [distance, setDistance] = useState('< 2km')
