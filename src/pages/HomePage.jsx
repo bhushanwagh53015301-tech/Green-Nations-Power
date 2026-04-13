@@ -19,6 +19,7 @@ import {
 import { Link } from 'react-router-dom'
 import Button from '../components/ui/Button'
 import founderImage from '../../assets/Vikas shivram jagtap.png'
+import directorImage from '../../assets/Siddharth-jagtap.png'
 import solarImage1 from '../../assets/solar/IMG_0521.PNG'
 import solarImage2 from '../../assets/solar/IMG_0522.JPG.jpeg'
 import solarImage3 from '../../assets/solar/IMG_0523.JPG.jpeg'
@@ -324,19 +325,25 @@ const staggerIn = {
 
 const DEFAULT_HOME_BILL = '0'
 const DEFAULT_COMMERCIAL_BILL = '0'
-const leadershipMembers = [
-  { name: 'Vikas Shivram Jagtap', role: 'Founder, Green Nations Power' },
-  { name: 'Siddharth Jagtap', role: 'Director, Green Nations Power' },
-]
+const founderProfile = {
+  name: 'Vikas Shivram Jagtap',
+  role: 'Founder, Green Nations Power',
+  image: founderImage,
+  bio:
+    'Green Nations Power was founded with one clear goal: make clean energy practical, reliable, and affordable for every household and business. With a strong focus on long-term value, our founder has built the company around quality workmanship, ethical service, and transparent project guidance from consultation to commissioning.',
+  note:
+    'Our founder leads with a service-first mindset, combining engineering discipline with transparent guidance so customers can adopt solar with confidence. His vision is not only to install solar systems, but to help families and businesses move toward energy independence, reduced electricity costs, and a cleaner future for the next generation.',
+}
 
-const leadershipOverview = [
-  'Green Nations Power is led by a hands-on leadership team focused on practical, high-performance solar solutions.',
-  'Vikas Shivram Jagtap and Siddharth Jagtap guide every project from planning to commissioning with transparent support.',
-  'Their approach combines quality engineering, site-specific design, and long-term service accountability.',
-  'Together, they are helping homes, societies, and businesses move toward reliable clean energy and lower bills.',
-]
-
-const leadershipGroupPhotos = [solarImage2, solarImage3, solarImage4]
+const directorProfile = {
+  name: 'Siddharth Jagtap',
+  role: 'Director, Green Nations Power',
+  image: directorImage,
+  bio:
+    'As Director, Siddharth Jagtap drives execution quality and customer satisfaction across residential, commercial, and EPC solar projects. He focuses on practical planning, timely delivery, and reliable performance so every project creates long-term value for customers.',
+  note:
+    'His leadership emphasizes transparent communication, strong technical standards, and continuous improvement at every stage, from site assessment to commissioning and post-installation support.',
+}
 
 function AnimatedCounter({ value, prefix = '', suffix = '' }) {
   const [displayValue, setDisplayValue] = useState(0)
@@ -516,52 +523,50 @@ function HomePage({ onOpenCalculator }) {
         className="bg-[#f3f5f4] py-14"
       >
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="space-y-6 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
-            <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="space-y-8">
+            <div className="grid items-center gap-8 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-8 lg:grid-cols-[1.05fr_0.95fr]">
               <article className="order-2 lg:order-1">
                 <p className="inline-flex rounded-md bg-brand-green px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-navy">
-                  About GNP Leadership
+                  Founder Spotlight
                 </p>
                 <h2 className="mt-4 font-montserrat text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
-                  Vikas and Siddharth Jagtap
+                  {founderProfile.name}
                 </h2>
-                <div className="mt-3 space-y-1 text-sm font-semibold text-brand-green sm:text-base">
-                  {leadershipMembers.map((member) => (
-                    <p key={member.name}>
-                      {member.name} - {member.role}
-                    </p>
-                  ))}
-                </div>
-                <div className="mt-4 space-y-3 text-slate-700">
-                  {leadershipOverview.map((line) => (
-                    <p key={line}>{line}</p>
-                  ))}
-                </div>
+                <p className="mt-1 text-base font-semibold text-brand-green">{founderProfile.role}</p>
+                <p className="mt-4 text-slate-700">{founderProfile.bio}</p>
+                <p className="mt-3 text-slate-600">{founderProfile.note}</p>
+                <Button to="/contact" className="mt-6">About Us</Button>
               </article>
 
-              <div className="order-1 mx-auto h-[300px] w-full max-w-[520px] overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100 sm:h-[350px] lg:order-2 lg:h-[380px]">
+              <div className="order-1 mx-auto h-[300px] w-full max-w-[520px] overflow-hidden rounded-[24px] sm:h-[350px] lg:order-2 lg:h-[380px]">
                 <img
-                  src={founderImage}
-                  alt="Vikas and Siddharth Jagtap leadership profile"
+                  src={founderProfile.image}
+                  alt={`${founderProfile.name}, ${founderProfile.role}`}
                   className="h-full w-full object-contain object-top"
                 />
               </div>
             </div>
 
-            <div>
-              <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-600">
-                Group Photos
-              </p>
-              <div className="grid gap-3 sm:grid-cols-3">
-                {leadershipGroupPhotos.map((photo, index) => (
-                  <div key={`${photo}-${index}`} className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
-                    <img
-                      src={photo}
-                      alt={`Green Nations Power team project photo ${index + 1}`}
-                      className="h-44 w-full object-cover"
-                    />
-                  </div>
-                ))}
+            <div className="grid items-center gap-8 rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-8 lg:grid-cols-[1.05fr_0.95fr]">
+              <article className="order-2 lg:order-2">
+                <p className="inline-flex rounded-md bg-brand-green px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-navy">
+                  Director Spotlight
+                </p>
+                <h2 className="mt-4 font-montserrat text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
+                  {directorProfile.name}
+                </h2>
+                <p className="mt-1 text-base font-semibold text-brand-green">{directorProfile.role}</p>
+                <p className="mt-4 text-slate-700">{directorProfile.bio}</p>
+                <p className="mt-3 text-slate-600">{directorProfile.note}</p>
+                <Button to="/contact" className="mt-6">Connect With Our Team</Button>
+              </article>
+
+              <div className="order-1 mx-auto h-[300px] w-full max-w-[520px] overflow-hidden rounded-[24px] sm:h-[350px] lg:order-1 lg:h-[380px]">
+                <img
+                  src={directorProfile.image}
+                  alt={`${directorProfile.name}, ${directorProfile.role}`}
+                  className="h-full w-full object-contain object-top"
+                />
               </div>
             </div>
           </div>

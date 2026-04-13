@@ -162,9 +162,9 @@ function AboutPage() {
               <p className="mt-1 text-base font-semibold text-brand-green">{founderProfile.role}</p>
               <p className="mt-4 text-slate-700">{founderProfile.bio}</p>
               <p className="mt-3 text-slate-600">{founderProfile.note}</p>
-              <Button to="/contact" className="mt-6">Connect With Our Team</Button>
+              <Button to="/contact" className="mt-6">About Us</Button>
             </article>
-            <div className="order-1 mx-auto h-[300px] w-full max-w-[520px] overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100 sm:h-[350px] lg:order-2 lg:h-[380px]">
+            <div className="order-1 mx-auto h-[300px] w-full max-w-[520px] overflow-hidden rounded-[24px] sm:h-[350px] lg:order-2 lg:h-[380px]">
               <img
                 src={founderProfile.image}
                 alt={`${founderProfile.name}, ${founderProfile.role}`}
