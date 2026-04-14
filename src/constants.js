@@ -3,7 +3,7 @@ export const COMPANY_INFO = {
   tagline: 'Solar Expert Solution',
   mission:
     'To create a greener and more sustainable future by harnessing solar energy with quality, reliability, sustainability, and excellent customer service.',
-  email: 'greennationpoweruk@gmail.com',
+  email: 'greennationsuk@gmail.com',
   phones: ['8007008899', '9765668899'],
   addresses: {
     pune: {
