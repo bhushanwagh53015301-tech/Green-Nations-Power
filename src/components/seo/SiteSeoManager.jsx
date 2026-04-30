@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 
 const BASE_KEYWORDS = [
@@ -161,6 +161,7 @@ function getSeoDetails(pathname) {
 
 function SiteSeoManager() {
   const { pathname, search } = useLocation()
+  const hasTrackedInitialPageView = useRef(false)
   const seoDetails = useMemo(() => getSeoDetails(pathname), [pathname])
   const keywordList = useMemo(() => [...BASE_KEYWORDS, ...seoDetails.keywords], [seoDetails.keywords])
 
@@ -170,6 +171,11 @@ function SiteSeoManager() {
     setMetaByName('keywords', keywordList.join(', '))
 
     if (typeof window.gtag === 'function') {
+      if (!hasTrackedInitialPageView.current) {
+        hasTrackedInitialPageView.current = true
+        return
+      }
+
       window.gtag('event', 'page_view', {
         page_title: seoDetails.title,
         page_path: `${pathname}${search}`,
