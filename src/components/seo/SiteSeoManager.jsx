@@ -160,7 +160,7 @@ function getSeoDetails(pathname) {
 }
 
 function SiteSeoManager() {
-  const { pathname } = useLocation()
+  const { pathname, search } = useLocation()
   const seoDetails = useMemo(() => getSeoDetails(pathname), [pathname])
   const keywordList = useMemo(() => [...BASE_KEYWORDS, ...seoDetails.keywords], [seoDetails.keywords])
 
@@ -168,7 +168,15 @@ function SiteSeoManager() {
     document.title = seoDetails.title
     setMetaByName('description', seoDetails.description)
     setMetaByName('keywords', keywordList.join(', '))
-  }, [seoDetails.title, seoDetails.description, keywordList])
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_title: seoDetails.title,
+        page_path: `${pathname}${search}`,
+        page_location: window.location.href,
+      })
+    }
+  }, [keywordList, pathname, search, seoDetails.description, seoDetails.title])
 
   return (
     <section className="sr-only" aria-label="Website SEO keyword content">

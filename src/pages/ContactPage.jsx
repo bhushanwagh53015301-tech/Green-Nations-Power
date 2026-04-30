@@ -127,13 +127,25 @@ function ContactPage() {
               <h2 className="border-b border-slate-200 px-5 py-4 font-montserrat text-xl font-bold text-brand-navy">
                 Uruli Kanchan Office Map
               </h2>
-              <iframe
+              {/* <iframe
                 title="Green Nations Power Uruli Kanchan map"
                 src="https://maps.google.com/maps?q=Uruli%20Kanchan%2C%20Pune&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 className="h-72 w-full"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-              />
+              /> */}
+
+                  <iframe
+  title="Google Map - Uruli Kanchan Pune"
+  src="https://www.google.com/maps?q=Uruli%20Kanchan%2C%20Pune&output=embed"
+  className="h-72 w-full border-0"
+  loading="lazy"
+  allowFullScreen
+  referrerPolicy="no-referrer-when-downgrade"
+/>
+
+
+
               <div className="border-t border-slate-200 bg-bg-light px-5 py-3 text-sm text-slate-600">
                 Map location: Uruli Kanchan, Pune
               </div>
