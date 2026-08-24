@@ -107,11 +107,9 @@ const jansamarthDocuments = [
 
 function AboutPage() {
   const [activeTab, setActiveTab] = useState('vision')
-  const [activeTeamIndex, setActiveTeamIndex] = useState(0)
   const [desktopCardHeight, setDesktopCardHeight] = useState(null)
   const whyChooseCardRef = useRef(null)
   const activeVisionMission = visionMissionTabs.find((item) => item.id === activeTab) ?? visionMissionTabs[0]
-  const activeTeamMember = teamMembers[activeTeamIndex]
   const ActiveIcon = activeVisionMission.icon
 
   useEffect(() => {
@@ -132,14 +130,6 @@ function AboutPage() {
     return () => {
       window.removeEventListener('resize', syncDesktopImageHeight)
     }
-  }, [])
-
-  useEffect(() => {
-    const autoplayId = window.setInterval(() => {
-      setActiveTeamIndex((previous) => (previous + 1) % teamMembers.length)
-    }, 4500)
-
-    return () => window.clearInterval(autoplayId)
   }, [])
 
   return (
@@ -378,90 +368,9 @@ function AboutPage() {
             </p>
           </section>
 
-          <section className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <p className="inline-flex rounded-md bg-brand-green px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand-navy">
-                  Team Members
-                </p>
-                <h2 className="mt-4 font-montserrat text-3xl font-extrabold text-brand-navy sm:text-4xl">
-                  Meet The People Behind Every Project
-                </h2>
-              </div>
-              <div />
-            </div>
-
-            <Motion.article
-              key={activeTeamMember.name}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.25 }}
-              className="mt-8 grid overflow-hidden rounded-[24px] border border-slate-200 bg-slate-50 lg:grid-cols-[0.85fr_1.15fr]"
-            >
-              <div className="h-[320px] sm:h-[360px] lg:h-[420px]">
-                <img
-                  src={activeTeamMember.image}
-                  alt={`${activeTeamMember.name}, ${activeTeamMember.role}`}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="p-6 sm:p-8">
-                <h3 className="font-montserrat text-2xl font-bold text-brand-navy">{activeTeamMember.name}</h3>
-                <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-brand-green">
-                  {activeTeamMember.role}
-                </p>
-                <p className="mt-4 max-w-2xl text-slate-600">{activeTeamMember.description}</p>
-              </div>
-            </Motion.article>
-
-            <div className="mt-5 flex flex-wrap justify-center gap-2">
-              {teamMembers.map((member, index) => (
-                <button
-                  key={member.name}
-                  type="button"
-                  onClick={() => setActiveTeamIndex(index)}
-                  className={`h-2.5 rounded-full transition ${
-                    index === activeTeamIndex ? 'w-8 bg-brand-green' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
-                  }`}
-                  aria-label={`View ${member.name}`}
-                />
-              ))}
-            </div>
-          </section>
         </div>
       </section>
     </Motion.div>
   )
 }
-
-const teamMembers = [
-  {
-    name: 'Priya Deshmukh',
-    role: 'Solar Design Engineer',
-    image:
-      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80',
-    description: 'Designs efficient systems aligned to site load profile, roof geometry, and long-term performance.',
-  },
-  {
-    name: 'Amit Jadhav',
-    role: 'Project Execution Lead',
-    image:
-      'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=900&q=80',
-    description: 'Manages end-to-end project delivery with quality checks, safety, and timeline discipline.',
-  },
-  {
-    name: 'Sneha Kulkarni',
-    role: 'Customer Success Manager',
-    image:
-      'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80',
-    description: 'Supports customers from proposal through commissioning and helps optimize post-installation output.',
-  },
-  {
-    name: 'Rahul Patil',
-    role: 'Operations & Service Head',
-    image:
-      'https://images.unsplash.com/photo-1542204625-de293a2a4b5b?auto=format&fit=crop&w=900&q=80',
-    description: 'Ensures preventive maintenance and responsive after-sales service for consistent plant uptime.',
-  },
-]
 export default AboutPage
